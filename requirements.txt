@@ -1,3 +1,8 @@
-torch
+torch=1.6.0
 transformers==2.3.0
-gremlinpython
+tensorboard==1.15.0
+gremlinpython==3.4.8
+numpy==1.19.1
+pandas==0.20.3
+thinc==7.0.8
+regex==2020.10.28
