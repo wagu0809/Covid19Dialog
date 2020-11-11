@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="f5e0de1f-5df8-4ad6-b294-321cac944b63" name="Default Changelist" comment="fff">
+      <change beforePath="$PROJECT_DIR$/CovidDialogue.py" beforeDir="false" afterPath="$PROJECT_DIR$/CovidDialogue.py" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="INCOMING_CHECK_STRATEGY" value="Never" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="MERGE" />
+  </component>
+  <component name="GithubDefaultAccount">
+    <option name="defaultAccountId" value="724d9c9c-9132-49f0-a295-4904cbe64261" />
+  </component>
+  <component name="ProjectId" id="1jE9quWw5fVWn5RL084bxI0y0CV" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../InspurMobilesemanticAnalysis" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\ProgramData\PycharmProjects\Covid19Dialog\data\covid" />
+      <recent name="D:\ProgramData\PycharmProjects\Covid19Dialog" />
+      <recent name="$PROJECT_DIR$/data" />
+      <recent name="$PROJECT_DIR$/util" />
+      <recent name="$PROJECT_DIR$/configs" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Python.CovidDialogue">
+    <configuration name="CovidDialogue" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Covid19Dialog" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/CovidDialogue.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="OperationDialogue" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Covid19Dialog" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/OperationDialogue.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="answerTemplate" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="Covid19Dialog" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/util" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/util/answerTemplate.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="Covid19Dialog" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="train" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Covid19Dialog" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/train.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.CovidDialogue" />
+        <item itemvalue="Python.test" />
+        <item itemvalue="Python.train" />
+        <item itemvalue="Python.OperationDialogue" />
+        <item itemvalue="Python.answerTemplate" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" BundledDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f5e0de1f-5df8-4ad6-b294-321cac944b63" name="Default Changelist" comment="" />
+      <created>1603358577169</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1603358577169</updated>
+      <workItem from="1604904632169" duration="4000" />
+    </task>
+    <task id="LOCAL-00001" summary="fff">
+      <created>1604433758726</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1604433758726</updated>
+    </task>
+    <task id="LOCAL-00002" summary="更改过滤edge和entity的逻辑">
+      <created>1604646323761</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1604646323761</updated>
+    </task>
+    <task id="LOCAL-00003" summary="增加问题生成模板">
+      <created>1604646358807</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1604646358807</updated>
+    </task>
+    <task id="LOCAL-00004" summary="cleaned keyword dictionary">
+      <created>1605058057357</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1605058057357</updated>
+    </task>
+    <task id="LOCAL-00005" summary="prepare to deploy on the server">
+      <created>1605059238608</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1605059238608</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/.." />
+    </ignored-roots>
+    <MESSAGE value="fff" />
+    <MESSAGE value="更改过滤edge和entity的逻辑" />
+    <MESSAGE value="增加问题生成模板" />
+    <MESSAGE value="cleaned keyword dictionary" />
+    <MESSAGE value="prepare to deploy on the server" />
+    <option name="LAST_COMMIT_MESSAGE" value="prepare to deploy on the server" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="710" y="304" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1603448340483">
+      <screen x="0" y="0" width="1920" height="1012" />
+    </state>
+    <state x="710" y="304" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1012@0.0.1920.1012" timestamp="1603448340483" />
+    <state x="773" y="220" key="#com.intellij.ide.util.MemberChooser" timestamp="1603434793211">
+      <screen x="0" y="0" width="1920" height="1012" />
+    </state>
+    <state x="773" y="220" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1012@0.0.1920.1012" timestamp="1603434793211" />
+    <state x="748" y="259" width="424" height="494" key="FileChooserDialogImpl" timestamp="1604453033118">
+      <screen x="0" y="0" width="1920" height="1012" />
+    </state>
+    <state x="748" y="259" width="424" height="494" key="FileChooserDialogImpl/0.0.1920.1012@0.0.1920.1012" timestamp="1604453033118" />
+    <state x="829" y="401" width="262" height="285" key="Github.ShareDialog" timestamp="1604462216686">
+      <screen x="0" y="0" width="1920" height="1012" />
+    </state>
+    <state x="829" y="401" width="262" height="285" key="Github.ShareDialog/0.0.1920.1012@0.0.1920.1012" timestamp="1604462216686" />
+    <state x="760" y="199" key="Github.UntrackedFilesDialog" timestamp="1604461769756">
+      <screen x="0" y="0" width="1920" height="1012" />
+    </state>
+    <state x="760" y="199" key="Github.UntrackedFilesDialog/0.0.1920.1012@0.0.1920.1012" timestamp="1604461769756" />
+    <state width="1897" height="245" key="GridCell.Tab.0.bottom" timestamp="1604397563738">
+      <screen x="0" y="0" width="1920" height="1012" />
+    </state>
+    <state width="1897" height="245" key="GridCell.Tab.0.bottom/0.0.1920.1012@0.0.1920.1012" timestamp="1604397563738" />
+    <state width="1897" height="245" key="GridCell.Tab.0.center" timestamp="1604397563738">
+      <screen x="0" y="0" width="1920" height="1012" />
+    </state>
+    <state width="1897" height="245" key="GridCell.Tab.0.center/0.0.1920.1012@0.0.1920.1012" timestamp="1604397563738" />
+    <state width="1897" height="245" key="GridCell.Tab.0.left" timestamp="1604397563737">
+      <screen x="0" y="0" width="1920" height="1012" />
+    </state>
+    <state width="1897" height="245" key="GridCell.Tab.0.left/0.0.1920.1012@0.0.1920.1012" timestamp="1604397563737" />
+    <state width="1897" height="245" key="GridCell.Tab.0.right" timestamp="1604397563738">
+      <screen x="0" y="0" width="1920" height="1012" />
+    </state>
+    <state width="1897" height="245" key="GridCell.Tab.0.right/0.0.1920.1012@0.0.1920.1012" timestamp="1604397563738" />
+    <state width="1897" height="187" key="GridCell.Tab.1.bottom" timestamp="1604307196597">
+      <screen x="0" y="0" width="1920" height="1012" />
+    </state>
+    <state width="1897" height="187" key="GridCell.Tab.1.bottom/0.0.1920.1012@0.0.1920.1012" timestamp="1604307196597" />
+    <state width="1897" height="187" key="GridCell.Tab.1.center" timestamp="1604307196597">
+      <screen x="0" y="0" width="1920" height="1012" />
+    </state>
+    <state width="1897" height="187" key="GridCell.Tab.1.center/0.0.1920.1012@0.0.1920.1012" timestamp="1604307196597" />
+    <state width="1897" height="187" key="GridCell.Tab.1.left" timestamp="1604307196597">
+      <screen x="0" y="0" width="1920" height="1012" />
+    </state>
+    <state width="1897" height="187" key="GridCell.Tab.1.left/0.0.1920.1012@0.0.1920.1012" timestamp="1604307196597" />
+    <state width="1897" height="187" key="GridCell.Tab.1.right" timestamp="1604307196597">
+      <screen x="0" y="0" width="1920" height="1012" />
+    </state>
+    <state width="1897" height="187" key="GridCell.Tab.1.right/0.0.1920.1012@0.0.1920.1012" timestamp="1604307196597" />
+    <state x="469" y="136" key="SettingsEditor" timestamp="1604457692001">
+      <screen x="0" y="0" width="1920" height="1012" />
+    </state>
+    <state x="469" y="136" key="SettingsEditor/0.0.1920.1012@0.0.1920.1012" timestamp="1604457692001" />
+    <state x="560" y="237" key="Vcs.Push.Dialog.v2" timestamp="1604461623496">
+      <screen x="0" y="0" width="1920" height="1012" />
+    </state>
+    <state x="560" y="237" key="Vcs.Push.Dialog.v2/0.0.1920.1012@0.0.1920.1012" timestamp="1604461623496" />
+    <state x="623" y="222" width="672" height="678" key="search.everywhere.popup" timestamp="1603359672634">
+      <screen x="0" y="0" width="1920" height="1012" />
+    </state>
+    <state x="623" y="222" width="672" height="678" key="search.everywhere.popup/0.0.1920.1012@0.0.1920.1012" timestamp="1603359672634" />
+  </component>
+</project>
