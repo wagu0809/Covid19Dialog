@@ -5,7 +5,6 @@ from gremlin_python.structure.graph import Graph
 from gremlin_python.driver.driver_remote_connection import DriverRemoteConnection
 from collections import Counter
 from util.answerTemplate import CovidTemplate2Gremlin
-import time
 
 graph = Graph()
 connection = DriverRemoteConnection('ws://47.115.21.171:8182/gremlin', 'covid19_traversal')
@@ -21,9 +20,9 @@ template = CovidTemplate2Gremlin()
 predictor = TagPredict(config_dir, model_dir, tag_dir, label_dir)
 
 
-def qa(question):
+def process_question(question):
     result, label_id = predictor.predict(question)
-    print(f"predicted results: {result, label_id}")
+    # print(f"predicted results: {result, label_id}")
     all_possible_gremlins, _ = create_gremlin(result, keywords_dict)
 
     # forward
@@ -48,28 +47,6 @@ def qa(question):
         backward_processed_answer = process_answer(backward_anwsers, False, label_id)
         backwardkeys = backward_processed_answer.keys()
 
-    # 根据正反方向的返回结果，如果正反是相同的答案和实体，只保留正向
-    # if forward_answers and backward_anwsers:
-    #     # 对于多实体的问题，保留实体越多的答案优先级越高
-    #     for edge in set(all_final_keys):
-    #         all_answers[edge] = []
-    #         final_forward_answer, final_backward_answer = forward_processed_answer[edge], backward_processed_answer[edge]
-    #         if len(final_forward_answer[0]) > len(final_backward_answer[0]) or \
-    #                 (len(final_forward_answer[0]) == len(final_backward_answer[0]) and
-    #                  final_forward_answer[-1] == final_backward_answer[-1]):
-    #             # 如果正向的实体数量大于等反向的实体数量且答案相等
-    #             final_processed_forward_answer = template.getAnswer(label_id, final_forward_answer, True)
-    #             all_answers[edge].append(final_processed_forward_answer)
-    #         elif len(final_forward_answer[0]) < len(final_backward_answer[0]):
-    #             final_processed_backward_answer = template.getAnswer(label_id, final_backward_answer, False)
-    #             all_answers[edge].append(final_processed_backward_answer)
-    #         else:
-    #             final_processed_forward_answer = template.getAnswer(label_id, final_forward_answer, True)
-    #             all_answers[edge].append(final_processed_forward_answer)
-    #
-    #             final_processed_backward_answer = template.getAnswer(label_id, final_backward_answer, False)
-    #             all_answers[edge].append(final_processed_backward_answer)
-    #     print(f'final answers: {all_answers}')
     if (forward_answers and not backward_anwsers) or (forward_answers and backward_anwsers):
 
         for edge in set(forwardkeys):
@@ -77,7 +54,7 @@ def qa(question):
             final_forward_answer = forward_processed_answer[edge]
             final_processed_forward_answer = template.getAnswer(label_id, final_forward_answer, True)
             all_answers[edge].append(final_processed_forward_answer)
-        print(f'final answers: {all_answers}')
+        # print(f'final answers: {all_answers}')
     elif backward_anwsers and not forward_answers:
 
         for edge in set(backwardkeys):
@@ -85,12 +62,12 @@ def qa(question):
             final_backward_answer = backward_processed_answer[edge]
             final_processed_backward_answer = template.getAnswer(label_id, final_backward_answer, False)
             all_answers[edge].append(final_processed_backward_answer)
-        print(f'final answers: {all_answers}')
+        # print(f'final answers: {all_answers}')
     else:
-        print(f"非常抱歉，没找到您想要的答案!")
+        all_answers['none'] = ["非常抱歉，没找到您想要的答案!"]
+        # print(f"非常抱歉，没找到您想要的答案!")
 
-    print(f"time of processing answer: {time.time()}")
-
+    return all_answers
 
 def process_answer(returned_answers, forward, label_id):
     """
@@ -154,9 +131,9 @@ if __name__ == "__main__":
     # question = '患有小儿先天性肺囊肿、小儿多源性房性心动过速以及急性肾功能不全等疾病时，应该做哪一种检查？'
     # question = '哪项检查能有效检测汉坦病毒肺综合征、沙雷菌肺炎和肺组织细胞增生症？'
     # question = '哪项检查能有效检测汉坦病毒肺综合征？'
-    # question = '长期使用糖皮质激素导致的损害有哪些症状？'   # 双向，单实体，多答案
+    question = '长期使用糖皮质激素导致的损害有哪些症状？'   # 双向，单实体，多答案
     # question = '泌尿道感染在医学专科中属于什么科？'   # predicted results: ((['泌尿道感染在医学专科中'], '医学专科;就诊;就诊科室'), 1)
-    question = '什么疾病的临床表现为鼻腔分泌物外溢？'
+    # question = '什么疾病的临床表现为鼻腔分泌物外溢？'
     # question = '有雀斑的人有何临床表现？'
     # question = '猪李氏杆菌病是否具有传染性？'
     # question = '氟灭酸属于什么类型的药？'
@@ -164,7 +141,7 @@ if __name__ == "__main__":
     # question = '妊娠合并慢性肾小球肾炎的高发人群是哪些人？'
     # question = '哪一种检查对于检测小儿多源性房性心动过速有帮助？'  # ((['于检测小儿多源性房性心动过速有帮'], '涉及症状;涉及疾病;涉及检查;相关检查'), 4)
     print(f"question: {question}")
-    qa(question)
+    process_question(question)
     # while True:
     #     q = input('please input a question: ')
     #     print(f"time from inputting a question: {time.time()}")
