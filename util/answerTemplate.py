@@ -1,10 +1,11 @@
 from gremlin_python.structure.graph import Graph
 from gremlin_python.driver.driver_remote_connection import DriverRemoteConnection
+import pandas as pd
 
 graph = Graph()
-connection = DriverRemoteConnection('ws://47.115.21.171:8182/gremlin', 'covid191029_traversal')
+connection = DriverRemoteConnection('ws://47.115.21.171:8182/gremlin', 'covid_traversal')
 g = graph.traversal().withRemote(connection)
-
+check_labels = pd.read_csv('./data/covid/check_categories.csv')['category'].tolist()
 
 def _clinicalManifestations(spo, forward):  # 临床表现
 
@@ -31,7 +32,7 @@ def _highRiskPart(spo, forward):  # 发病部位
 
 
 def _office(spo, forward):  # 医学专科，科室，就诊科室
-    print(f"传入的spo是：{spo}")
+    # print(f"传入的spo是：{spo}")
     entity, edges, answer = spo
     s = ''
     for edge in edges:
@@ -41,7 +42,7 @@ def _office(spo, forward):  # 医学专科，科室，就诊科室
             else:
                 s = '、'.join(answer) + '所属的医学专科为' + '、'.join(entity) + '。'
             s = s + '\n'
-        if edge == '就诊' or edge == '就诊科室':
+        if edge == '科室' or edge == '就诊科室':
             if forward:
                 s = '、'.join(entity) + '需要到' + '、'.join(answer) + '就诊' + '。'
             else:
@@ -52,7 +53,7 @@ def _office(spo, forward):  # 医学专科，科室，就诊科室
 
 
 def _relatedSymptomAndDisease(spo, forward):  # 涉及症状;涉及疾病
-    print(f"传入的spo是：{spo}")
+    # print(f"传入的spo是：{spo}")
     entity, edges, answer = spo
     s = ''
     for edge in edges:
@@ -73,21 +74,36 @@ def _relatedSymptomAndDisease(spo, forward):  # 涉及症状;涉及疾病
 
 
 def _relatedDiseaseAndCheck(spo, forward):  # 涉及症状;涉及疾病;涉及检查;相关检查
-    print(f"传入的spo是：{spo}")
+    # print(f"传入的spo是：{spo}")
     entity, edges, answer = spo
     s = ''
-    for edge in edges:
-        if edge == '涉及疾病' or edge == '涉及症状':
-            s = '、'.join(answer) + '能对' + '、'.join(entity) + '做出检查。\n'
+    answer_check = []
+    answer_not_check = []
 
-        if edge == '涉及检查' or edge == '相关检查':
-            s = '、'.join(entity) + '需要做的检查是' + '、'.join(answer) + '。\n'
+    for a in answer:
+        a_label = g.V().has('name', a).label().toList()[0]
+        if a_label in check_labels:
+            answer_check.append(a)
+        else:
+            answer_not_check.append(a)
+
+    for edge in edges:
+        if answer_check:
+            if edge == '涉及疾病' or edge == '涉及症状':
+                s += '、'.join(answer_check) + '能对' + '、'.join(entity) + '做出检查。'
+            if edge == '涉及检查' or edge == '相关检查':
+                s += '、'.join(entity) + '需要做的检查是' + '、'.join(answer_check) + '。'
+        if answer_not_check:
+            if edge == '涉及疾病':
+                s += '、'.join(entity) + '涉及到的疾病是' + '、'.join(answer_not_check) + '。'
+            elif edge == '涉及症状':
+                s += '、'.join(entity) + '会出现的症状是' + '、'.join(answer_not_check) + '。'
 
     return s
 
 
 def _infectiousness(spo, forward):  # 传染性
-    print(f"传入的spo是：{spo}")
+    # print(f"传入的spo是：{spo}")
     entity, _, answer = spo
     if '无' in '、'.join(answer) or '否' in '、'.join(answer) or '不' in '、'.join(answer):
         s = '、'.join(entity) + '无传染性。\n'
@@ -216,28 +232,75 @@ class CovidTemplate2Gremlin:
         return classification[cls](spo, is_forward)
 
 
-def _commonCommand():
-    pass
+def _commonCommand(spo, forward):
+    entity, edges, answer = spo
+    s = '，'.join(entity) + '的常见命令是' + '，'.join(answer) + '。'
+    return s
 
 
+def _definition(spo, forward):
+    # print(spo)
+    entity, edges, answer = spo
+    s = '，'.join(entity) + '的定义是' + '，'.join(answer) + '。'
+    return s
+
+
+def _example(spo, forward):
+    # print(spo)
+    entity, edges, answer = spo
+    s = '，'.join(answer) + '。'
+    return s
+
+
+def _conception(spo, forward):
+    # print(spo)
+    entity, edges, answer = spo
+    s = '，'.join(entity) + '的概念是' + '，'.join(answer) + '。'
+    return s
+
+
+def _characteristic(spo, forward):
+    # print(spo)
+    entity, edges, answer = spo
+    s = '，'.join(entity) + '的特点是' + '，'.join(answer) + '。'
+    return s
+
+
+def _type(spo, forward):
+    # print(spo)
+    entity, edges, answer = spo
+    s = '，'.join(entity) + '的类型是' + '，'.join(answer) + '。'
+    return s
+
+
+def _steps(spo, forward):
+    # print(spo)
+    entity, edges, answer = spo
+    s = '，'.join(entity) + '的步骤是：' + '，'.join(answer) + '。'
+    return s
 
 
 class ServerTemplate2Gremlin():
     def __init__(self):
         pass
 
-    def getGremlin(self, cls, entity):
+    def getAnswer(self, cls, spo, is_forward):
         classification = {
             0: _commonCommand,
-            1: _commonCommand,
-            2: _commonCommand,
-            3: _commonCommand,
-            4: _commonCommand,
+            1: _definition,
+            2: _example,
+            3: _conception,
+            4: _characteristic,
+            5: _type,
+            6: _steps,
         }
-        return classification[cls](entity)
+        return classification[cls](spo, is_forward)
 
 
 if __name__ == "__main__":
+    result = g.V().has('name', '氧分压').label().toList()  # ['疾病']
+    # print(list(result[0].values())[1])
+    print(result)
 
-    ans = [['阵发性鼻塞'], ['涉及症状'], ['发热', '鼻痒', '头昏', '打鼾', '鼻孔闭锁', '打喷嚏', '鼻塞', '张口呼吸']]
-    template = CovidTemplate2Gremlin().getAnswer(0, ans)
+    # for item in result:
+    #     print(item)
