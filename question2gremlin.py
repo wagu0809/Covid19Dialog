@@ -1,7 +1,7 @@
 from gremlin_python.structure.graph import Graph
 from gremlin_python.driver.driver_remote_connection import DriverRemoteConnection
 import json
-import time
+from .util.utils import clean_entity
 
 
 def _filter(entities, predicted_edges, vocabs):
@@ -56,21 +56,6 @@ def _filter(entities, predicted_edges, vocabs):
     return {'forward': forward_edges, 'backward': backward_edges}, cleared_verticies, unreachable_verticies
 
 
-def clean_entity(entity):
-    words = ['患有', '患者', '症状', '的人', '的', '测定', '检查', '出现', '检测', '在', '感染', '后', '我', '经常', '时']
-
-    for word in words:
-        # if word in entity:
-        if entity.endswith(word) or entity.startswith(word):
-            # if word in entity:
-            #     entity.replace(word, '')
-            # else:
-            #     continue
-            entity = entity.replace(word, '')
-
-    return entity
-
-
 def create_gremlin(conditions, vocabs):
     verticies = conditions[0]
     edges = conditions[1].split(';')
@@ -97,7 +82,7 @@ def create_gremlin(conditions, vocabs):
 
 if __name__ == "__main__":
     graph = Graph()
-    connection = DriverRemoteConnection('ws://47.115.21.171:8182/gremlin', 'covid191029_traversal')
+    connection = DriverRemoteConnection('ws://47.115.21.171:8182/gremlin', 'covid_traversal')
     g = graph.traversal().withRemote(connection)
 
     rr = (['鼻腔分泌物外溢'], '临床表现')
