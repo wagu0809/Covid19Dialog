@@ -82,6 +82,22 @@ def recover_result(dataloader, tag_logits, tag_mask_tensor, ori_word_seq, new2or
     return tag_intent
 
 
+def clean_entity(entity):
+    words = ['，', '。', '有', '和', '时', '患有', '查', '患者', '症状', '的人', '测定', '的', '等',
+             '检查', '出现', '出', '现', '检测', '在', '感染', '后', '我', '经常', ]
+
+    for word in words:
+        # if word in entity:
+        if entity.endswith(word) or entity.startswith(word):
+            # if word in entity:
+            #     entity.replace(word, '')
+            # else:
+            #     continue
+            entity = entity.replace(word, '')
+
+    return entity
+
+
 # def create_keyword_dict(keywords_dict_dir, keywords, g):
 #     keyword_dict = {}
 #     for keyword in keywords:
