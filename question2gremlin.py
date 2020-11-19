@@ -1,7 +1,7 @@
 from gremlin_python.structure.graph import Graph
 from gremlin_python.driver.driver_remote_connection import DriverRemoteConnection
 import json
-from .util.utils import clean_entity
+from util.utils import clean_entity, containsAlpha
 
 
 def _filter(entities, predicted_edges, vocabs):
@@ -67,14 +67,20 @@ def create_gremlin(conditions, vocabs):
 
             if vertice in unreachable_verticies:
                 continue
-            forward_gremlin = f"g.V().has('name', '{vertice}').outE().hasLabel('{edge}').inV().elementMap()"
+            if containsAlpha(vertice):
+                forward_gremlin = f"g.V().has('name', P('textContains', '{vertice}')).outE().hasLabel('{edge}').inV().elementMap()"
+            else:
+                forward_gremlin = f"g.V().has('name', '{vertice}').outE().hasLabel('{edge}').inV().elementMap()"
             all_possible_gremlin['forward'].append({'gsql': forward_gremlin, 'entity': vertice, 'edge': edge})
 
     for edge in edges['backward']:
         for vertice in verticies:
             if vertice in unreachable_verticies:
                 continue
-            backward_gremlin = f"g.V().has('name', '{vertice}').inE().hasLabel('{edge}').outV().elementMap()"
+            if containsAlpha(vertice):
+                backward_gremlin = f"g.V().has('name', P('textContains', '{vertice}')).inE().hasLabel('{edge}').outV().elementMap()"
+            else:
+                backward_gremlin = f"g.V().has('name', '{vertice}').inE().hasLabel('{edge}').outV().elementMap()"
             all_possible_gremlin['backward'].append({'gsql': backward_gremlin, 'entity': vertice, 'edge': edge})
 
     return all_possible_gremlin, unreachable_verticies
@@ -85,7 +91,7 @@ if __name__ == "__main__":
     connection = DriverRemoteConnection('ws://47.115.21.171:8182/gremlin', 'covid_traversal')
     g = graph.traversal().withRemote(connection)
 
-    rr = (['鼻腔分泌物外溢'], '临床表现')
-    keywords = json.loads(open('./data/keywords.json', encoding='utf-8').read())
-    result1 = create_gremlin(rr, keywords)
-    print(result1)
+    # rr = (['鼻腔分泌物外溢'], '临床表现')
+    # keywords = json.loads(open('./data/keywords.json', encoding='utf-8').read())
+    # result1 = create_gremlin(rr, keywords)
+    # print(result1)

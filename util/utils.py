@@ -1,4 +1,5 @@
 import torch
+import re
 import json
 from gremlin_python.structure.graph import Graph
 from gremlin_python.driver.driver_remote_connection import DriverRemoteConnection
@@ -97,6 +98,10 @@ def clean_entity(entity):
 
     return entity
 
+
+def containsAlpha(s):
+
+    return bool(re.search('[a-z]', s))
 
 # def create_keyword_dict(keywords_dict_dir, keywords, g):
 #     keyword_dict = {}
