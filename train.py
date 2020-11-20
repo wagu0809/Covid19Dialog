@@ -19,17 +19,26 @@ def set_seed(seed):
 
 
 if __name__ == "__main__":
-
+    domain = 'covid'
+    # domain = 'server'
     config_path = './configs/configs.json'
-    tag_dir = './data/covid/tag_vocab.json'
-    intent_dir = './data/covid/label_vocab.json'
     log_dir = './temp/log'
-    data_dir = './data/covid'
-    # data_dir = './data/server'
-    output_dir = './output/covid'
-    checkpoint = ''
-    # checkpoint = './output/covid/pytorch_model.bin'
-    zipped_model_path = os.path.join(output_dir, 'bert_convid19.zip')
+    if domain == 'covid':
+        tag_dir = './data/covid/tag_vocab.json'
+        intent_dir = './data/covid/label_vocab.json'
+        data_dir = './data/covid'
+        output_dir = './output/covid'
+        checkpoint = ''
+        # checkpoint = './output/covid/pytorch_model.bin'
+        zipped_model_path = os.path.join(output_dir, 'bert_convid19.zip')
+    if domain == 'server':
+        tag_dir = './data/server/tag_vocab.json'
+        intent_dir = './data/server/label_vocab.json'
+        data_dir = './data/server'
+        output_dir = './output/server'
+        checkpoint = ''
+        # checkpoint = './output/covid/pytorch_model.bin'
+        zipped_model_path = os.path.join(output_dir, 'bert_convid19.zip')
 
     with open(config_path, encoding='utf-8', mode='r') as f:
         content = f.read()
