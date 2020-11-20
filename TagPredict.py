@@ -48,7 +48,7 @@ class TagPredict:
 
         result = recover_result(self.dataloader, tag_logits[0][0], tag_mask_tensor[0], word_squence, new2ori)
 
-        print(f"result: {result}")
+        # print(f"result: {result}")
         return result, self.label2id[result[-1]] if result[-1] != '' else 0
 
 

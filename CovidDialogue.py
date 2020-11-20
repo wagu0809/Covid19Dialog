@@ -38,7 +38,7 @@ def process_question(question):
             result = result_m
     else:
         result = result_m
-    print(f"predicted results: {result, label_id}")
+    # print(f"predicted results: {result, label_id}")
     if not result[0]:
         return {'none': ["非常抱歉，没找到您想要的答案!"]}
     all_possible_gremlins, _ = create_gremlin(result, keywords_dict)
