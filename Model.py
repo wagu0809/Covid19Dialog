@@ -14,7 +14,7 @@ class TagBert(nn.Module):
         self.finetune = model_config['finetune']
         self.hidden_units = model_config['hidden_units']
 
-        # self.ln = nn.LayerNorm(self.hidden_units)  # TODO: add a normalization layer
+        # self.ln = nn.LayerNorm(self.hidden_units)  # TODO: add a normalization layer(maybe)
         if self.hidden_units > 0:
             self.slot_classifier = nn.Linear(self.hidden_units, self.tag_dim)
             self.slot_hidden = nn.Linear(self.bert.config.hidden_size, self.hidden_units)

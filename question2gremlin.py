@@ -68,9 +68,9 @@ def create_gremlin(conditions, vocabs):
             if vertice in unreachable_verticies:
                 continue
             if containsAlpha(vertice):
-                forward_gremlin = f"g.V().has('name', P('textContains', '{vertice}')).outE().hasLabel('{edge}').inV().elementMap()"
+                forward_gremlin = f"g.V().has('name', P('textContains', '{vertice}')).outE().hasLabel('{edge}').inV().elementMap().toList()"
             else:
-                forward_gremlin = f"g.V().has('name', '{vertice}').outE().hasLabel('{edge}').inV().elementMap()"
+                forward_gremlin = f"g.V().has('name', '{vertice}').outE().hasLabel('{edge}').inV().elementMap().toList()"
             all_possible_gremlin['forward'].append({'gsql': forward_gremlin, 'entity': vertice, 'edge': edge})
 
     for edge in edges['backward']:
@@ -78,9 +78,9 @@ def create_gremlin(conditions, vocabs):
             if vertice in unreachable_verticies:
                 continue
             if containsAlpha(vertice):
-                backward_gremlin = f"g.V().has('name', P('textContains', '{vertice}')).inE().hasLabel('{edge}').outV().elementMap()"
+                backward_gremlin = f"g.V().has('name', P('textContains', '{vertice}')).inE().hasLabel('{edge}').outV().elementMap().toList()"
             else:
-                backward_gremlin = f"g.V().has('name', '{vertice}').inE().hasLabel('{edge}').outV().elementMap()"
+                backward_gremlin = f"g.V().has('name', '{vertice}').inE().hasLabel('{edge}').outV().elementMap().toList()"
             all_possible_gremlin['backward'].append({'gsql': backward_gremlin, 'entity': vertice, 'edge': edge})
 
     return all_possible_gremlin, unreachable_verticies
