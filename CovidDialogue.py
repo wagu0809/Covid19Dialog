@@ -3,26 +3,44 @@ from question2gremlin import create_gremlin
 import json
 from gremlin_python.structure.graph import Graph
 from gremlin_python.driver.driver_remote_connection import DriverRemoteConnection
+from gremlin_python.process.traversal import P
 from collections import Counter
 from util.answerTemplate import CovidTemplate2Gremlin
+import pandas as pd
 
 graph = Graph()
-connection = DriverRemoteConnection('ws://47.115.21.171:8182/gremlin', 'covid19_traversal')
+connection = DriverRemoteConnection('ws://47.115.21.171:8182/gremlin', 'covid_traversal')
 g = graph.traversal().withRemote(connection)
 
 config_dir = './configs/configs.json'
+model_dir_m = './output/pytorch_model_covid_multi.bin'
+model_dir_s = './output/pytorch_model_covid_single.bin'
 model_dir = './output/pytorch_model_covid.bin'
 tag_dir = './data/covid/tag_vocab.json'
 label_dir = './data/covid/label_vocab.json'
 keywords_dict_dir = './data/covid/keywords_dict.json'
 keywords_dict = json.loads(open(keywords_dict_dir, encoding='utf-8').read())
 template = CovidTemplate2Gremlin()
-predictor = TagPredict(config_dir, model_dir, tag_dir, label_dir)
+predictor_m = TagPredict(config_dir, model_dir_m, tag_dir, label_dir)
+predictor_s = TagPredict(config_dir, model_dir_s, tag_dir, label_dir)
+# predictor = TagPredict(config_dir, model_dir, tag_dir, label_dir)
 
 
 def process_question(question):
-    result, label_id = predictor.predict(question)
-    # print(f"predicted results: {result, label_id}")
+    all_answers = {}
+    # result, label_id = predictor.predict(question)
+    result_m, label_id = predictor_m.predict(question)
+    if len(result_m[0]) == 1 or not result_m[0]:
+        result_s, label_id = predictor_s.predict(question)
+        if result_s[0]:
+            result = result_s
+        else:
+            result = result_m
+    else:
+        result = result_m
+    print(f"predicted results: {result, label_id}")
+    if not result[0]:
+        return {'none': ["非常抱歉，没找到您想要的答案!"]}
     all_possible_gremlins, _ = create_gremlin(result, keywords_dict)
 
     # forward
@@ -39,16 +57,15 @@ def process_question(question):
         for item in result:
             backward_anwsers.append({'answer': item['name'], 'entity': gsql['entity'], 'edge': gsql['edge']})
 
-    all_answers = {}
     if forward_answers:
-        forward_processed_answer = process_answer(forward_answers, True, label_id)
+        forward_processed_answer = process_answer(forward_answers, True)
         forwardkeys = forward_processed_answer.keys()
+
     if backward_anwsers:
-        backward_processed_answer = process_answer(backward_anwsers, False, label_id)
+        backward_processed_answer = process_answer(backward_anwsers, False)
         backwardkeys = backward_processed_answer.keys()
 
     if (forward_answers and not backward_anwsers) or (forward_answers and backward_anwsers):
-
         for edge in set(forwardkeys):
             all_answers[edge] = []
             final_forward_answer = forward_processed_answer[edge]
@@ -56,25 +73,21 @@ def process_question(question):
             all_answers[edge].append(final_processed_forward_answer)
         # print(f'final answers: {all_answers}')
     elif backward_anwsers and not forward_answers:
-
         for edge in set(backwardkeys):
             all_answers[edge] = []
             final_backward_answer = backward_processed_answer[edge]
             final_processed_backward_answer = template.getAnswer(label_id, final_backward_answer, False)
             all_answers[edge].append(final_processed_backward_answer)
-        # print(f'final answers: {all_answers}')
     else:
         all_answers['none'] = ["非常抱歉，没找到您想要的答案!"]
-        # print(f"非常抱歉，没找到您想要的答案!")
 
     return all_answers
 
-def process_answer(returned_answers, forward, label_id):
+def process_answer(returned_answers, forward):
     """
     如果问题中有多个实体，每个实体的答案会不一样，将这些答案中相同的找出来作为问题答案。
     :param returned_answers:
     :param forward:
-    :param label_id:
     :return:
     """
     edges = set([returned_answer['edge'] for returned_answer in returned_answers])
@@ -114,7 +127,31 @@ def process_answer(returned_answers, forward, label_id):
 
 
 if __name__ == "__main__":
-
+    # questions = ['怎样的检查项目能对小儿多源性房性心动过速、急性肾功能不全以及动静脉血管瘤做出检测？',
+    #             '哪项检查能有效检测汉坦病毒肺综合征、沙雷菌肺炎和肺组织细胞增生症？',
+    #             '患有小儿先天性肺囊肿、小儿多源性房性心动过速以及急性肾功能不全等疾病时，应该做哪一种检查？',
+    #             '对于肺组织细胞增生症、急性呼吸窘迫综合症和新生儿呼吸窘迫综合征患者，需要做哪项检查对病情有用？',
+    #             '哪种医学检查能检测出新生儿晚期代谢性酸中毒、新生儿低体温和百草枯中毒？',
+    #             '阵发性鼻塞和耳闷症状与什么疾病相关？',
+    #             '伴随皮肤发红症状的疾病是什么？',
+    #             '新型冠状病毒肺炎的临床表现有哪些？',
+    #             '哪个病有可能涉及到口炎和发热的症状？',
+    #             '急性盆腔炎涉及哪些症状？',
+    #             '从医学专科上讲，增龄性黄斑变性属于什么科？',
+    #             '在医学专科中口腔溃疡属于什么科？',
+    #             '患有小儿先天性肺囊肿、小儿多源性房性心动过速以及急性肾功能不全等疾病时，应该做哪一种检查？',
+    #             '哪项检查能有效检测汉坦病毒肺综合征、沙雷菌肺炎和肺组织细胞增生症？',
+    #             '哪项检查能有效检测汉坦病毒肺综合征？',
+    #             '长期使用糖皮质激素导致的损害有哪些症状？',
+    #             '什么疾病的临床表现为鼻腔分泌物外溢？',
+    #             '有雀斑的人有何临床表现？',
+    #             '猪李氏杆菌病是否具有传染性？',
+    #             '氟灭酸属于什么类型的药？',
+    #             '杏苏感冒冲剂是处方药吗？',
+    #             '妊娠合并慢性肾小球肾炎的高发人群是哪些人？',
+    #             '哪一种检查对于检测小儿多源性房性心动过速有帮助？',
+    #             '得了糖尿病足，需要做哪一种检查？',
+    #             ]
     # question = '怎样的检查项目能对小儿多源性房性心动过速、急性肾功能不全以及动静脉血管瘤做出检测？'  # 单向、多实体、单答案
     # question = '哪项检查能有效检测汉坦病毒肺综合征、沙雷菌肺炎和肺组织细胞增生症？'  # 双向、多实体、单答案
     # question = '患有小儿先天性肺囊肿、小儿多源性房性心动过速以及急性肾功能不全等疾病时，应该做哪一种检查？'
@@ -131,7 +168,7 @@ if __name__ == "__main__":
     # question = '患有小儿先天性肺囊肿、小儿多源性房性心动过速以及急性肾功能不全等疾病时，应该做哪一种检查？'
     # question = '哪项检查能有效检测汉坦病毒肺综合征、沙雷菌肺炎和肺组织细胞增生症？'
     # question = '哪项检查能有效检测汉坦病毒肺综合征？'
-    question = '长期使用糖皮质激素导致的损害有哪些症状？'   # 双向，单实体，多答案
+    # question = '长期使用糖皮质激素导致的损害有哪些症状？'   # 双向，单实体，多答案
     # question = '泌尿道感染在医学专科中属于什么科？'   # predicted results: ((['泌尿道感染在医学专科中'], '医学专科;就诊;就诊科室'), 1)
     # question = '什么疾病的临床表现为鼻腔分泌物外溢？'
     # question = '有雀斑的人有何临床表现？'
@@ -140,8 +177,18 @@ if __name__ == "__main__":
     # question = '杏苏感冒冲剂是处方药吗？'
     # question = '妊娠合并慢性肾小球肾炎的高发人群是哪些人？'
     # question = '哪一种检查对于检测小儿多源性房性心动过速有帮助？'  # ((['于检测小儿多源性房性心动过速有帮'], '涉及症状;涉及疾病;涉及检查;相关检查'), 4)
-    print(f"question: {question}")
-    process_question(question)
+    # question = '哪项检查能对氧分压低症状以及严重急性呼吸综合征做出检测？'
+    # question = '能检测HIV相关呼吸道感染的检查项目有什么？'
+    # question = '什么疾病会伴随CO2潴留的症状？'
+    # question = '哪项检查能对氧分压低症状做出检测？'
+
+    questions = pd.read_csv('./data/covid/real_questions.csv')
+    questions = questions['questions']
+    for question in questions:
+        print(f"question: {question}")
+        answer = process_question(question)
+        print(answer)
+        print('-'*20)
     # while True:
     #     q = input('please input a question: ')
     #     print(f"time from inputting a question: {time.time()}")
