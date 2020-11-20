@@ -13,9 +13,9 @@ connection = DriverRemoteConnection('ws://47.115.21.171:8182/gremlin', 'covid_tr
 g = graph.traversal().withRemote(connection)
 
 config_dir = './configs/configs.json'
-model_dir_m = './output/pytorch_model_covid_multi.bin'
-model_dir_s = './output/pytorch_model_covid_single.bin'
-model_dir = './output/pytorch_model_covid.bin'
+model_dir_m = './output/covid/pytorch_model_covid_multi.bin'
+model_dir_s = './output/covid/pytorch_model_covid_single.bin'
+model_dir = './output/covid/pytorch_model_covid.bin'
 tag_dir = './data/covid/tag_vocab.json'
 label_dir = './data/covid/label_vocab.json'
 keywords_dict_dir = './data/covid/keywords_dict.json'
@@ -181,14 +181,15 @@ if __name__ == "__main__":
     # question = '能检测HIV相关呼吸道感染的检查项目有什么？'
     # question = '什么疾病会伴随CO2潴留的症状？'
     # question = '哪项检查能对氧分压低症状做出检测？'
+    question = '关节疼痛的临床表现都有哪些？'
 
-    questions = pd.read_csv('./data/covid/real_questions.csv')
-    questions = questions['questions']
-    for question in questions:
-        print(f"question: {question}")
-        answer = process_question(question)
-        print(answer)
-        print('-'*20)
+    # questions = pd.read_csv('./data/covid/real_questions.csv')
+    # questions = questions['questions']
+    # for question in questions:
+    print(f"question: {question}")
+    answer = process_question(question)
+    print(answer)
+    print('-'*20)
     # while True:
     #     q = input('please input a question: ')
     #     print(f"time from inputting a question: {time.time()}")
