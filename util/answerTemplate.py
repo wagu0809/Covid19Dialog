@@ -3,9 +3,14 @@ from gremlin_python.driver.driver_remote_connection import DriverRemoteConnectio
 import pandas as pd
 
 graph = Graph()
-connection = DriverRemoteConnection('ws://47.115.21.171:8182/gremlin', 'covid_traversal')
-g = graph.traversal().withRemote(connection)
+# covid数据库
+connection_c = DriverRemoteConnection('ws://47.115.21.171:8182/gremlin', 'covid_traversal')
+g_c = graph.traversal().withRemote(connection_c)
 check_labels = pd.read_csv('./data/covid/check_categories.csv')['category'].tolist()
+
+# operation数据库
+connection_o = DriverRemoteConnection('ws://47.115.21.171:8182/gremlin', 'operation3_traversal')
+g_o = graph.traversal().withRemote(connection_o)
 
 def _clinicalManifestations(spo, forward):  # 临床表现
 
@@ -232,9 +237,27 @@ class CovidTemplate2Gremlin:
         return classification[cls](spo, is_forward)
 
 
+def _methods(spo, forward):  # 实现方式
+    entity, edges, answer = spo
+    s = '，'.join(entity) + '通过' + '，'.join(answer) + '来实现。'
+    return s
+
+
 def _commonCommand(spo, forward):
     entity, edges, answer = spo
-    s = '，'.join(entity) + '的常见命令是' + '，'.join(answer) + '。'
+    s = '，'.join(entity) + '的常用命令是'
+    for a in answer:
+        result = g_o.V().has('name', a).elementMap().toList()[0]
+        if '命令' in result.keys() and result['命令']:
+            s += a + ': ' + result['命令'] + '。'
+        else:
+            s += a + '。'
+    return s
+
+
+def _mentenanceOperation(spo, forward):
+    entity, edges, answer = spo
+    s = '，'.join(entity) + '的运维操作包括' + '，'.join(answer) + '。'
     return s
 
 
@@ -286,13 +309,9 @@ class ServerTemplate2Gremlin():
 
     def getAnswer(self, cls, spo, is_forward):
         classification = {
-            0: _commonCommand,
-            1: _definition,
-            2: _example,
-            3: _conception,
-            4: _characteristic,
-            5: _type,
-            6: _steps,
+            0: _methods,
+            1: _commonCommand,
+            2: _mentenanceOperation,
         }
         return classification[cls](spo, is_forward)
 
