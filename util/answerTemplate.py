@@ -86,7 +86,7 @@ def _relatedDiseaseAndCheck(spo, forward):  # 涉及症状;涉及疾病;涉及�
     answer_not_check = []
 
     for a in answer:
-        a_label = g.V().has('name', a).label().toList()[0]
+        a_label = g_c.V().has('name', a).label().toList()[0]
         if a_label in check_labels:
             answer_check.append(a)
         else:
