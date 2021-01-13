@@ -1,5 +1,6 @@
 import torch
 import re
+from collections import Counter
 import json
 from gremlin_python.structure.graph import Graph
 from gremlin_python.driver.driver_remote_connection import DriverRemoteConnection
@@ -56,6 +57,7 @@ def tag2triples(word_seq, tag_seq):
                     j += 1
                 else:
                     break
+            value = value.replace('##', '')
             values.append(value)
         i += 1
     # return triples
@@ -103,22 +105,44 @@ def containsAlpha(s):
 
     return bool(re.search('[a-z]', s))
 
-# def create_keyword_dict(keywords_dict_dir, keywords, g):
-#     keyword_dict = {}
-#     for keyword in keywords:
-#         keyword_dict[keyword] = {'forward': [], 'backward': []}
-#         in_edges = g.V().has('name', keyword).inE().elementMap()
-#         out_edges = g.V().has('name', keyword).outE().elementMap()
-#         backward_edges = []
-#         for edge in in_edges:
-#             e = list(edge.values())[1]
-#             keyword_dict[keyword]['backward'].append(e)
-#         forward_edges = []
-#         for edge in out_edges:
-#             e = list(edge.values())[1]
-#             keyword_dict[keyword]['forward'].append(e)
-#
-#     with open(keywords_dict_dir, 'w', encoding='utf-8') as ff:
-#         json.dump(keyword_dict, ff, ensure_ascii=False, indent=4)
-#
-#     return keyword_dict
+def process_answer(returned_answers, forward):
+    """
+    如果问题中有多个实体，每个实体的答案会不一样，将这些答案中相同的找出来作为问题答案。
+    :param returned_answers:
+    :param forward:  boolean，判断正反向
+    :return:
+    """
+    edges = set([returned_answer['edge'] for returned_answer in returned_answers])
+    # edges = predictor.id2label[label_id].split(';')
+    process_answers = {}
+    for edge in edges:
+        # process_answers[edge] = []
+        answers = [returned_answer for returned_answer in returned_answers if returned_answer['edge'] == edge]
+        # if len(answers) > 0:
+        count = Counter([a['answer'] for a in answers])
+        count = sorted(count.items(), key=lambda i: i[1], reverse=True)
+        # print(count)
+        answer_count = count[0][1]
+        num_answer = 0
+        for item in count:
+            if item[1] == answer_count:
+                num_answer += 1
+        selected_answers = [i[0] for i in count[:num_answer]]
+        final_selected_returned_answers = []
+        for answer in selected_answers:
+            for returned_answer in answers:
+                if returned_answer['answer'] == answer:
+                    final_selected_returned_answers.append(returned_answer)
+        final_entities, final_answers = [], []
+        for final_selected_returned_answer in final_selected_returned_answers:
+            if final_selected_returned_answer['answer'] not in final_answers:
+                final_answers.append(final_selected_returned_answer['answer'])
+            if final_selected_returned_answer['entity'] not in final_entities:
+                final_entities.append(final_selected_returned_answer['entity'])
+            # if final_selected_returned_answer['edge'] not in final_edge:
+            #     edge.append(final_selected_returned_answer['edge'])
+        process_answers[edge] = [final_entities, [edge], final_answers]
+
+    # final_processed_answer = template.getAnswer(label_id, [final_entities, edge, final_answers], forward)
+
+    return process_answers
