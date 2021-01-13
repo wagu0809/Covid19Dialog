@@ -2,6 +2,7 @@ from gremlin_python.structure.graph import Graph
 from gremlin_python.driver.driver_remote_connection import DriverRemoteConnection
 import json
 from util.utils import clean_entity, containsAlpha
+# from util.cleanPrediction import clean
 
 
 def _filter(entities, predicted_edges, vocabs):
@@ -56,21 +57,29 @@ def _filter(entities, predicted_edges, vocabs):
     return {'forward': forward_edges, 'backward': backward_edges}, cleared_verticies, unreachable_verticies
 
 
-def create_gremlin(conditions, vocabs):
-    verticies = conditions[0]
-    edges = conditions[1].split(';')
+def create_gremlin(conditions, vocabs, use_id=False):
+    if use_id:
+        verticies, edges = conditions[0]
+        verticies_ids = conditions[1]
+    else:
+        verticies, edges = conditions
+    edges = edges.split(';')
     edges, verticies, unreachable_verticies = _filter(verticies, edges, vocabs)
+    # if unreachable_verticies:  # 试用语义相似度做过滤，暂时不用
+    #     cleaned_entities = clean(model, unreachable_verticies, matrix)
+    #     verticies = list(verticies) + cleaned_entities
     all_possible_gremlin = {'forward': [], 'backward': []}
-
     for edge in edges['forward']:
-        for vertice in verticies:
-
+        for i, vertice in enumerate(verticies):
             if vertice in unreachable_verticies:
                 continue
-            if containsAlpha(vertice):
-                forward_gremlin = f"g.V().has('name', P('textContains', '{vertice}')).outE().hasLabel('{edge}').inV().elementMap().toList()"
+            if use_id:  # 如果试用id为真，返回通过id查找的gremlin语句
+                forward_gremlin = f"g.V({verticies_ids[i]}).outE().hasLabel('{edge}').inV().elementMap().toList()"
             else:
-                forward_gremlin = f"g.V().has('name', '{vertice}').outE().hasLabel('{edge}').inV().elementMap().toList()"
+                if containsAlpha(vertice):
+                    forward_gremlin = f"g.V().has('name', P('textContains', '{vertice}')).outE().hasLabel('{edge}').inV().elementMap().toList()"
+                else:
+                    forward_gremlin = f"g.V().has('name', '{vertice}').outE().hasLabel('{edge}').inV().elementMap().toList()"
             all_possible_gremlin['forward'].append({'gsql': forward_gremlin, 'entity': vertice, 'edge': edge})
 
     for edge in edges['backward']:
@@ -83,7 +92,7 @@ def create_gremlin(conditions, vocabs):
                 backward_gremlin = f"g.V().has('name', '{vertice}').inE().hasLabel('{edge}').outV().elementMap().toList()"
             all_possible_gremlin['backward'].append({'gsql': backward_gremlin, 'entity': vertice, 'edge': edge})
 
-    return all_possible_gremlin, unreachable_verticies
+    return all_possible_gremlin, verticies
 
 
 if __name__ == "__main__":

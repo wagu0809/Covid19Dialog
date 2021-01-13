@@ -8,7 +8,7 @@ from collections import Counter
 from util.answerTemplate import ServerTemplate2Gremlin
 from util.dictProcessing import create_dict_matrix
 from util.utils import containsAlpha
-from util.cleanPrediction import clean
+# from util.cleanPrediction import clean
 
 graph = Graph()
 connection = DriverRemoteConnection('ws://47.115.21.171:8182/gremlin', 'operation_traversal')
@@ -19,16 +19,18 @@ model_dir = './output/server/pytorch_model_server.bin'
 tag_dir = './data/server/tag_vocab.json'
 label_dir = './data/server/label_vocab.json'
 keywords_dict_dir = './data/server/keywords_dict.json'
-keywords_matrix_dict = './data/server/keywords_matrix_dict.json'
+# keywords_matrix_dict = './data/server/keywords_matrix_dict.json'
 keywords_dict = json.loads(open(keywords_dict_dir, encoding='utf-8').read())
 template = ServerTemplate2Gremlin()
 predictor = TagPredict(config_dir, model_dir, tag_dir, label_dir)
 
-if not os.path.exists(keywords_matrix_dict):
-    create_dict_matrix(predictor.model, keywords_dict_dir, 'server')
-
-with open(keywords_matrix_dict, encoding='utf-8', mode='r') as f:
-    matrix_list = json.load(f)
+"""##############新功能调试代码区域###################"""
+# if not os.path.exists(keywords_matrix_dict):
+#     create_dict_matrix(predictor.model, keywords_dict_dir, 'server')
+#
+# with open(keywords_matrix_dict, encoding='utf-8', mode='r') as f:
+#     matrix_list = json.load(f)
+"""##############新功能调试代码区域###################"""
 
 
 def process_question(question):
