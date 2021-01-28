@@ -19,26 +19,18 @@ def set_seed(seed):
 
 
 if __name__ == "__main__":
-    domain = 'covid'
-    # domain = 'server'
+    # domain = 'covid'
+    domain = 'server'
     config_path = './configs/configs.json'
     log_dir = './temp/log'
-    if domain == 'covid':
-        tag_dir = './data/covid/tag_vocab.json'
-        intent_dir = './data/covid/label_vocab.json'
-        data_dir = './data/covid'
-        output_dir = './output/covid'
-        checkpoint = ''
-        # checkpoint = './output/covid/pytorch_model.bin'
-        zipped_model_path = os.path.join(output_dir, 'bert_convid19.zip')
-    if domain == 'server':
-        tag_dir = './data/server/tag_vocab.json'
-        intent_dir = './data/server/label_vocab.json'
-        data_dir = './data/server'
-        output_dir = './output/server'
-        checkpoint = ''
-        # checkpoint = './output/covid/pytorch_model.bin'
-        zipped_model_path = os.path.join(output_dir, 'bert_convid19.zip')
+
+    tag_dir = f'./data/{domain}/tag_vocab.json'
+    intent_dir = f'./data/{domain}/label_vocab.json'
+    data_dir = f'./data/{domain}'
+    output_dir = f'./output/{domain}'
+    checkpoint = ''
+    # checkpoint = './output/covid/pytorch_model.bin'
+    zipped_model_path = os.path.join(output_dir, 'bert_convid19.zip')
 
     with open(config_path, encoding='utf-8', mode='r') as f:
         content = f.read()
@@ -149,7 +141,7 @@ if __name__ == "__main__":
 
             if F1 > best_val_f1:
                 best_val_f1 = F1
-                torch.save(model.state_dict(), os.path.join(output_dir, 'pytorch_model.bin'))
+                torch.save(model.state_dict(), os.path.join(output_dir, 'pytorch_model' + str(step) + '.bin'))
                 logger.info('best val precision %.4f' % best_val_f1)
                 logger.info(f'save on {output_dir}')
 

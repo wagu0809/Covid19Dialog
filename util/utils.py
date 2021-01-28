@@ -5,6 +5,14 @@ import json
 from gremlin_python.structure.graph import Graph
 from gremlin_python.driver.driver_remote_connection import DriverRemoteConnection
 
+graph = Graph()
+# covid数据库
+connection_c = DriverRemoteConnection('ws://47.115.21.171:8182/gremlin', 'covid_traversal')
+g_c = graph.traversal().withRemote(connection_c)
+
+# operation数据库
+connection_o = DriverRemoteConnection('ws://47.115.21.171:8182/gremlin', 'operation_traversal')
+g_o = graph.traversal().withRemote(connection_o)
 
 def calculateF1(predict_golden):
     # print(f"predict_golden")

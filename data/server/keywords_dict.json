@@ -1,209 +1,80 @@
 {
-    "有序集合中对指定成员的分数加上增量 increment": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "start": {
-        "forward": [],
-        "backward": [
-            "参数说明"
-        ]
-    },
-    "decrement": {
-        "forward": [],
-        "backward": [
-            "参数说明"
-        ]
-    },
-    "config rewrite": {
-        "forward": [
-            "作用",
-            "参数说明",
-            "返回值"
-        ],
-        "backward": []
-    },
-    "获取流包含的元素数量，即消息长度": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "sismember": {
+    "lpop": {
         "forward": [
             "作用",
             "参数说明"
         ],
-        "backward": []
-    },
-    "expire": {
-        "forward": [
-            "作用",
-            "参数说明"
-        ],
-        "backward": []
-    },
-    "订阅一个或多个符合给定模式的频道。": {
-        "forward": [],
         "backward": [
-            "作用"
+            "常用命令"
         ]
     },
-    "count": {
-        "forward": [],
-        "backward": [
-            "参数说明"
-        ]
-    },
-    "value": {
-        "forward": [],
-        "backward": [
-            "参数说明"
-        ]
-    },
-    "移出并获取列表的最后一个元素， 如果列表没有元素会阻塞列表直到等待超时或发现可弹出元素为止。": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "用于异步执行一个 aof（appendonly file） 文件重写操作。": {
-        "forward": [],
-        "backward": []
-    },
-    "command getkeys": {
-        "forward": [
-            "作用"
-        ],
-        "backward": []
-    },
-    "使用 with rollup": {
+    "查询文档": {
         "forward": [
             "常用命令"
         ],
-        "backward": []
-    },
-    "检查给定 key 是否存在。": {
-        "forward": [],
         "backward": [
+            "实现方式"
+        ]
+    },
+    "config resetstat": {
+        "forward": [
             "作用"
-        ]
-    },
-    "添加消息到末尾": {
-        "forward": [],
+        ],
         "backward": [
-            "作用"
+            "常用命令"
         ]
     },
-    "pidfile /var/run/redis.pid": {
-        "forward": [],
-        "backward": [
-            "参数说明"
-        ]
-    },
-    "xreadgroup group": {
+    "pfadd": {
         "forward": [
             "作用",
             "参数说明"
         ],
-        "backward": []
-    },
-    "$addtoset": {
-        "forward": [],
-        "backward": []
-    },
-    "channel": {
-        "forward": [],
         "backward": [
-            "参数说明"
+            "常用命令"
         ]
     },
-    "获取在哈希表中指定 key 的所有字段和值": {
-        "forward": [],
+    "修改数据表": {
+        "forward": [
+            "包括"
+        ],
         "backward": [
+            "实现方式"
+        ]
+    },
+    "quit": {
+        "forward": [
             "作用"
-        ]
-    },
-    "newkey": {
-        "forward": [],
+        ],
         "backward": [
-            "参数说明"
+            "常用命令"
         ]
     },
-    "offset": {
-        "forward": [],
-        "backward": [
-            "参数说明"
-        ]
-    },
-    "numkeys": {
-        "forward": [],
-        "backward": [
-            "参数说明"
-        ]
-    },
-    "zremrangebylex": {
+    "script load": {
         "forward": [
             "作用",
             "参数说明"
         ],
-        "backward": []
-    },
-    "monitor": {
-        "forward": [
-            "作用"
-        ],
-        "backward": []
-    },
-    "返回有序集中指定区间内的成员，通过索引，分数从高到低": {
-        "forward": [],
         "backward": [
-            "作用"
+            "常用命令"
         ]
     },
-    "删除所有数据库的所有key": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "sparse": {
-        "forward": [],
-        "backward": [
-            "参数说明"
-        ]
-    },
-    "geodist 用于返回两个给定位置之间的距离。": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "geoadd": {
+    "slaveof": {
         "forward": [
             "作用",
-            "实例",
             "参数说明"
         ],
-        "backward": []
-    },
-    "dir": {
-        "forward": [],
         "backward": [
-            "参数说明"
+            "常用命令"
         ]
     },
-    "--host <:port>, -h <:port>": {
-        "forward": [],
+    "修改数据": {
+        "forward": [
+            "常用命令",
+            "实现方式"
+        ],
         "backward": [
-            "参数说明"
+            "实现方式"
         ]
-    },
-    "嵌套的redis命令的详细信息列表。列表顺序是随机的。": {
-        "forward": [],
-        "backward": []
     },
     "安全管理": {
         "forward": [
@@ -213,28 +84,83 @@
             "运维操作"
         ]
     },
-    "milliseconds": {
-        "forward": [],
-        "backward": [
-            "参数说明"
-        ]
-    },
-    "pattern": {
-        "forward": [],
-        "backward": [
-            "参数说明"
-        ]
-    },
-    "query": {
-        "forward": [],
-        "backward": [
-            "参数说明"
-        ]
-    },
-    "移除有序集合中的一个或多个成员": {
-        "forward": [],
-        "backward": [
+    "bgrewriteaof": {
+        "forward": [
             "作用"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "command count": {
+        "forward": [
+            "作用",
+            "返回值"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "分片": {
+        "forward": [
+            "简介",
+            "实现方式"
+        ],
+        "backward": [
+            "实现方式"
+        ]
+    },
+    "zcount": {
+        "forward": [
+            "作用",
+            "参数说明"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "xtrim": {
+        "forward": [
+            "作用",
+            "参数说明"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "where子句": {
+        "forward": [
+            "常用命令"
+        ],
+        "backward": [
+            "实现方式"
+        ]
+    },
+    "zadd": {
+        "forward": [
+            "作用",
+            "参数说明"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "rpush": {
+        "forward": [
+            "作用",
+            "参数说明"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "lrem": {
+        "forward": [
+            "作用",
+            "参数说明"
+        ],
+        "backward": [
+            "常用命令"
         ]
     },
     "client pause": {
@@ -243,34 +169,236 @@
             "参数说明",
             "返回值"
         ],
-        "backward": []
-    },
-    "将一个值插入到已存在的列表头部": {
-        "forward": [],
         "backward": [
-            "作用"
+            "常用命令",
+            "包括"
         ]
     },
-    "-o": {
-        "forward": [],
-        "backward": [
+    "client setname": {
+        "forward": [
+            "作用",
             "参数说明"
+        ],
+        "backward": [
+            "常用命令",
+            "包括"
         ]
     },
-    "获取指定 redis 命令描述的数组": {
-        "forward": [],
-        "backward": []
-    },
-    "用 value 参数覆写给定 key 所储存的字符串值，从偏移量 offset 开始。": {
-        "forward": [],
+    "geopos": {
+        "forward": [
+            "作用",
+            "参数说明"
+        ],
         "backward": [
-            "作用"
+            "常用命令"
         ]
     },
-    "修改输入文档的结构。可以用来重命名、增加或删除域，也可以用于创建计算结果以及嵌套文档。": {
-        "forward": [],
+    "hdel": {
+        "forward": [
+            "作用",
+            "参数说明"
+        ],
         "backward": [
+            "常用命令"
+        ]
+    },
+    "redis键(key)": {
+        "forward": [
+            "常用命令"
+        ],
+        "backward": [
+            "实现方式"
+        ]
+    },
+    "lset": {
+        "forward": [
+            "作用",
+            "参数说明"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "删除文档": {
+        "forward": [
+            "常用命令"
+        ],
+        "backward": [
+            "实现方式"
+        ]
+    },
+    "hget": {
+        "forward": [
+            "作用",
+            "参数说明"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "消费者组": {
+        "forward": [
+            "常用命令"
+        ],
+        "backward": [
+            "实现方式"
+        ]
+    },
+    "hgetall": {
+        "forward": [
+            "作用",
+            "参数说明"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "client list": {
+        "forward": [
+            "作用",
+            "返回值"
+        ],
+        "backward": [
+            "常用命令",
+            "包括"
+        ]
+    },
+    "xgroup delconsumer": {
+        "forward": [
+            "作用",
+            "参数说明"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "内存优化": {
+        "forward": [
+            "实现方式"
+        ],
+        "backward": [
+            "运维操作"
+        ]
+    },
+    "xgroup destroy": {
+        "forward": [
+            "作用",
+            "参数说明"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "ttl": {
+        "forward": [
+            "作用",
+            "参数说明"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "命令行语句连接": {
+        "forward": [
+            "常用命令"
+        ],
+        "backward": [
+            "实现方式"
+        ]
+    },
+    "subscribe": {
+        "forward": [
+            "作用",
+            "参数说明"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "hvals": {
+        "forward": [
+            "作用",
+            "参数说明"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "数据库管理": {
+        "forward": [
+            "实现方式"
+        ],
+        "backward": [
+            "运维操作"
+        ]
+    },
+    "auth": {
+        "forward": [
+            "作用",
+            "参数说明"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "mongotop": {
+        "forward": [
             "作用"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "randomkey": {
+        "forward": [
+            "作用"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "command": {
+        "forward": [
+            "作用",
+            "返回值"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "msetnx": {
+        "forward": [
+            "作用",
+            "参数说明"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "script kill": {
+        "forward": [
+            "作用"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "sadd": {
+        "forward": [
+            "作用",
+            "参数说明"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "srandmember": {
+        "forward": [
+            "作用",
+            "参数说明"
+        ],
+        "backward": [
+            "常用命令"
         ]
     },
     "zrevrangebyscore": {
@@ -278,73 +406,697 @@
             "作用",
             "参数说明"
         ],
-        "backward": []
-    },
-    "sadd": {
-        "forward": [
-            "作用",
-            "参数说明"
-        ],
-        "backward": []
-    },
-    "ltrim": {
-        "forward": [
-            "作用",
-            "参数说明"
-        ],
-        "backward": []
-    },
-    "move": {
-        "forward": [
-            "作用",
-            "参数说明"
-        ],
-        "backward": []
-    },
-    "save": {
-        "forward": [
-            "作用",
-            "参数说明"
-        ],
         "backward": [
             "常用命令"
         ]
     },
-    "获取给定命令的所有键": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "修改 key 的名称": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "zrevrank": {
+    "mapreduce": {
         "forward": [
             "作用",
-            "参数说明"
-        ],
-        "backward": []
-    },
-    "从脚本缓存中移除所有脚本。": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "sort": {
-        "forward": [
-            "作用"
-        ],
-        "backward": [
             "参数说明",
+            "返回值"
+        ],
+        "backward": [
             "常用命令"
         ]
     },
-    "管道": {
+    "insertmany": {
+        "forward": [
+            "作用",
+            "参数说明"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "存储优化": {
+        "forward": [
+            "实现方式"
+        ],
+        "backward": [
+            "运维操作"
+        ]
+    },
+    "hkeys": {
+        "forward": [
+            "作用",
+            "参数说明"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "slowlog reset": {
+        "forward": [
+            "作用"
+        ],
+        "backward": [
+            "包括"
+        ]
+    },
+    "zlexcount": {
+        "forward": [
+            "作用",
+            "参数说明"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "pubsub": {
+        "forward": [
+            "作用",
+            "参数说明",
+            "包括"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "ping": {
+        "forward": [
+            "作用"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "xgroup setid": {
+        "forward": [
+            "作用",
+            "参数说明"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "创建集合": {
+        "forward": [
+            "常用命令"
+        ],
+        "backward": [
+            "实现方式"
+        ]
+    },
+    "georadiusbymember": {
+        "forward": [
+            "作用",
+            "参数说明"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "stream": {
+        "forward": [
+            "简介",
+            "优点",
+            "实现方式"
+        ],
+        "backward": [
+            "实现方式"
+        ]
+    },
+    "查看订阅": {
+        "forward": [
+            "常用命令"
+        ],
+        "backward": [
+            "实现方式"
+        ]
+    },
+    "哈希": {
+        "forward": [
+            "常用命令"
+        ],
+        "backward": [
+            "包括"
+        ]
+    },
+    "zcard": {
+        "forward": [
+            "作用",
+            "参数说明"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "pexpire": {
+        "forward": [
+            "作用",
+            "参数说明"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "skip": {
+        "forward": [
+            "作用"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "command getkeys": {
+        "forward": [
+            "作用"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "$unwind": {
+        "forward": [
+            "作用"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "like子句": {
+        "forward": [
+            "常用命令"
+        ],
+        "backward": [
+            "实现方式"
+        ]
+    },
+    "evalsha": {
+        "forward": [
+            "作用",
+            "参数说明"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "重复数据": {
+        "forward": [
+            "实现方式"
+        ],
+        "backward": [
+            "实现方式"
+        ]
+    },
+    "hexists": {
+        "forward": [
+            "作用",
+            "参数说明"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "修改字段": {
+        "forward": [
+            "包括"
+        ],
+        "backward": [
+            "实现方式"
+        ]
+    },
+    "xclaim": {
+        "forward": [
+            "作用"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "连接命令": {
+        "forward": [
+            "常用命令"
+        ],
+        "backward": [
+            "实现方式"
+        ]
+    },
+    "导入数据": {
+        "forward": [
+            "常用命令"
+        ],
+        "backward": [
+            "实现方式"
+        ]
+    },
+    "创建数据库": {
+        "forward": [
+            "常用命令"
+        ],
+        "backward": [
+            "实现方式"
+        ]
+    },
+    "临时表": {
+        "forward": [
+            "常用命令"
+        ],
+        "backward": [
+            "实现方式",
+            "包括"
+        ]
+    },
+    "lrange": {
+        "forward": [
+            "作用",
+            "参数说明"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "flushall": {
+        "forward": [
+            "作用"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "linsert": {
+        "forward": [
+            "作用",
+            "参数说明"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "time": {
+        "forward": [
+            "作用"
+        ],
+        "backward": [
+            "常用命令",
+            "包括"
+        ]
+    },
+    "文档管理": {
+        "forward": [
+            "实现方式"
+        ],
+        "backward": [
+            "运维操作"
+        ]
+    },
+    "地理位置存储": {
+        "forward": [
+            "常用命令"
+        ],
+        "backward": [
+            "实现方式"
+        ]
+    },
+    "monitor": {
+        "forward": [
+            "作用"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "数据类型": {
+        "forward": [
+            "实现方式",
+            "包括"
+        ],
+        "backward": [
+            "实现方式"
+        ]
+    },
+    "数值类型": {
+        "forward": [
+            "包括"
+        ],
+        "backward": [
+            "实现方式"
+        ]
+    },
+    "srem": {
+        "forward": [
+            "作用",
+            "参数说明"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "特殊表": {
+        "forward": [
+            "包括"
+        ],
+        "backward": [
+            "实现方式"
+        ]
+    },
+    "strlen": {
+        "forward": [
+            "作用",
+            "参数说明"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "insert": {
+        "forward": [
+            "作用",
+            "参数说明"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "插入数据": {
+        "forward": [
+            "常用命令"
+        ],
+        "backward": [
+            "实现方式"
+        ]
+    },
+    "lpush": {
+        "forward": [
+            "作用",
+            "参数说明"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "pubsub numsub": {
+        "forward": [
+            "作用",
+            "参数说明"
+        ],
+        "backward": [
+            "包括"
+        ]
+    },
+    "在sql select 语句中使用 order by 子句": {
+        "forward": [
+            "常用命令"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "decrby": {
+        "forward": [
+            "作用",
+            "参数说明"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "$geonear": {
+        "forward": [
+            "作用"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "redis-cli": {
+        "forward": [
+            "作用",
+            "实例",
+            "参数说明"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "查询优化": {
+        "forward": [
+            "实现方式"
+        ],
+        "backward": [
+            "运维操作"
+        ]
+    },
+    "mongodump": {
+        "forward": [
+            "作用",
+            "参数说明"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "redis": {
+        "forward": [
+            "简介",
+            "运维操作",
+            "属于"
+        ],
+        "backward": [
+            "包括"
+        ]
+    },
+    "spop": {
+        "forward": [
+            "作用",
+            "参数说明"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "数据库": {
+        "forward": [
+            "包括"
+        ],
+        "backward": []
+    },
+    "script exists": {
+        "forward": [
+            "作用",
+            "参数说明"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "集合": {
+        "forward": [
+            "常用命令"
+        ],
+        "backward": [
+            "包括"
+        ]
+    },
+    "xinfo groups": {
+        "forward": [
+            "作用"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "windows": {
+        "forward": [
+            "安装过程",
+            "配置过程",
+            "实现方式"
+        ],
+        "backward": [
+            "安装平台"
+        ]
+    },
+    "zrangebyscore": {
+        "forward": [
+            "作用",
+            "参数说明"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "安装管理": {
+        "forward": [
+            "安装平台"
+        ],
+        "backward": [
+            "运维操作"
+        ]
+    },
+    "客户端": {
+        "forward": [
+            "常用命令",
+            "包括"
+        ],
+        "backward": [
+            "实现方式"
+        ]
+    },
+    "删除数据表": {
+        "forward": [
+            "常用命令"
+        ],
+        "backward": [
+            "实现方式"
+        ]
+    },
+    "select": {
+        "forward": [
+            "作用",
+            "参数说明"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "脚本": {
+        "forward": [
+            "常用命令"
+        ],
+        "backward": [
+            "实现方式"
+        ]
+    },
+    "windows配置mongodb服务": {
+        "forward": [
+            "配置过程"
+        ],
+        "backward": [
+            "实现方式"
+        ]
+    },
+    "在 php 脚本中使用 order by 子句": {
+        "forward": [
+            "常用命令"
+        ],
+        "backward": [
+            "实现方式"
+        ]
+    },
+    "smembers": {
+        "forward": [
+            "作用",
+            "参数说明"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "消息通信": {
+        "forward": [
+            "实现方式"
+        ],
+        "backward": [
+            "运维操作"
+        ]
+    },
+    "zincrby": {
+        "forward": [
+            "作用",
+            "参数说明"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "xinfo stream": {
+        "forward": [
+            "作用"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "备份与恢复": {
+        "forward": [
+            "常用命令"
+        ],
+        "backward": [
+            "实现方式"
+        ]
+    },
+    "分区": {
+        "forward": [
+            "简介",
+            "优点",
+            "实现方式",
+            "缺点"
+        ],
+        "backward": [
+            "实现方式"
+        ]
+    },
+    "linux安装mongodb数据库": {
+        "forward": [
+            "安装过程"
+        ],
+        "backward": [
+            "实现方式"
+        ]
+    },
+    "createindex": {
+        "forward": [
+            "作用",
+            "参数说明"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "client getname": {
+        "forward": [
+            "作用",
+            "返回值"
+        ],
+        "backward": [
+            "常用命令",
+            "包括"
+        ]
+    },
+    "使用 with rollup": {
+        "forward": [
+            "常用命令"
+        ],
+        "backward": [
+            "实现方式"
+        ]
+    },
+    "xrange": {
+        "forward": [
+            "作用",
+            "参数说明"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "数据管理": {
+        "forward": [
+            "实现方式"
+        ],
+        "backward": [
+            "运维操作"
+        ]
+    },
+    "zscan": {
+        "forward": [
+            "作用",
+            "参数说明"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "数据表管理": {
+        "forward": [
+            "实现方式"
+        ],
+        "backward": [
+            "运维操作"
+        ]
+    },
+    "map reduce": {
         "forward": [
             "常用命令",
             "简介"
@@ -353,32 +1105,440 @@
             "实现方式"
         ]
     },
-    "获取存储在哈希表中指定字段的值。": {
-        "forward": [],
+    "插入文档": {
+        "forward": [
+            "常用命令",
+            "实例"
+        ],
         "backward": [
-            "作用"
+            "实现方式"
         ]
     },
-    "update 更新语句": {
-        "forward": [],
+    "退订": {
+        "forward": [
+            "常用命令"
+        ],
+        "backward": [
+            "实现方式"
+        ]
+    },
+    "setbit": {
+        "forward": [
+            "作用",
+            "参数说明"
+        ],
         "backward": [
             "常用命令"
         ]
     },
-    "返回所有给定集合的并集": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "执行delete删除语句": {
-        "forward": [],
+    "incrby": {
+        "forward": [
+            "作用",
+            "参数说明"
+        ],
         "backward": [
             "常用命令"
         ]
     },
-    "使用rpm -ivh 安装命令": {
-        "forward": [],
+    "insertone": {
+        "forward": [
+            "作用",
+            "参数说明"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "script flush": {
+        "forward": [
+            "作用"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "slowlog get": {
+        "forward": [
+            "作用",
+            "参数说明"
+        ],
+        "backward": [
+            "包括"
+        ]
+    },
+    "psetex": {
+        "forward": [
+            "作用",
+            "参数说明"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "删除数据": {
+        "forward": [
+            "常用命令"
+        ],
+        "backward": [
+            "实现方式"
+        ]
+    },
+    "hscan": {
+        "forward": [
+            "作用",
+            "参数说明"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "数据增删改查": {
+        "forward": [
+            "实现方式"
+        ],
+        "backward": [
+            "运维操作"
+        ]
+    },
+    "pubsub channels": {
+        "forward": [
+            "作用",
+            "参数说明"
+        ],
+        "backward": [
+            "包括"
+        ]
+    },
+    "xlen": {
+        "forward": [
+            "作用",
+            "参数说明"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "keys": {
+        "forward": [
+            "作用",
+            "参数说明"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "zrange": {
+        "forward": [
+            "作用",
+            "参数说明"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "debug segfault": {
+        "forward": [
+            "作用"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "sort": {
+        "forward": [
+            "作用"
+        ],
+        "backward": [
+            "常用命令",
+            "参数说明"
+        ]
+    },
+    "复制表": {
+        "forward": [
+            "常用命令"
+        ],
+        "backward": [
+            "实现方式",
+            "包括"
+        ]
+    },
+    "zrangebylex": {
+        "forward": [
+            "作用",
+            "参数说明"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "管道技术": {
+        "forward": [
+            "简介",
+            "优点"
+        ],
+        "backward": [
+            "实现方式"
+        ]
+    },
+    "mongorestore": {
+        "forward": [
+            "作用",
+            "参数说明"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "geodist": {
+        "forward": [
+            "作用",
+            "参数说明"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "选择数据库": {
+        "forward": [
+            "常用命令"
+        ],
+        "backward": [
+            "实现方式"
+        ]
+    },
+    "列表": {
+        "forward": [
+            "常用命令"
+        ],
+        "backward": [
+            "包括"
+        ]
+    },
+    "command info": {
+        "forward": [
+            "作用",
+            "参数说明"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "更新文档": {
+        "forward": [
+            "常用命令"
+        ],
+        "backward": [
+            "实现方式"
+        ]
+    },
+    "$skip": {
+        "forward": [
+            "作用"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "关系型数据库": {
+        "forward": [
+            "包括"
+        ],
+        "backward": [
+            "包括",
+            "属于"
+        ]
+    },
+    "异常数据": {
+        "forward": [
+            "包括"
+        ],
+        "backward": [
+            "实现方式"
+        ]
+    },
+    "setnx": {
+        "forward": [
+            "作用",
+            "参数说明"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "服务器命令": {
+        "forward": [
+            "常用命令"
+        ],
+        "backward": [
+            "实现方式"
+        ]
+    },
+    "删除集合": {
+        "forward": [
+            "常用命令"
+        ],
+        "backward": [
+            "实现方式"
+        ]
+    },
+    "mongodb数据库": {
+        "forward": [
+            "简介",
+            "特点",
+            "运维操作",
+            "属于"
+        ],
+        "backward": [
+            "包括"
+        ]
+    },
+    "expireat": {
+        "forward": [
+            "作用",
+            "参数说明"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "linux配置mongodb服务": {
+        "forward": [
+            "配置过程"
+        ],
+        "backward": [
+            "实现方式"
+        ]
+    },
+    "$match": {
+        "forward": [
+            "作用"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "正则表达式": {
+        "forward": [
+            "常用命令"
+        ],
+        "backward": [
+            "实现方式"
+        ]
+    },
+    "type": {
+        "forward": [
+            "作用",
+            "参数说明"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "config rewrite": {
+        "forward": [
+            "作用",
+            "参数说明",
+            "返回值"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "sync": {
+        "forward": [
+            "作用"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "xgroup create": {
+        "forward": [
+            "作用",
+            "参数说明"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "linux": {
+        "forward": [
+            "安装过程",
+            "实现方式"
+        ],
+        "backward": [
+            "安装平台"
+        ]
+    },
+    "geoadd": {
+        "forward": [
+            "作用",
+            "实例",
+            "参数说明"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "复制": {
+        "forward": [
+            "简介",
+            "原理",
+            "特点",
+            "配置过程"
+        ],
+        "backward": [
+            "实现方式"
+        ]
+    },
+    "group by 语法": {
+        "forward": [
+            "常用命令"
+        ],
+        "backward": [
+            "实现方式"
+        ]
+    },
+    "get": {
+        "forward": [
+            "作用",
+            "参数说明"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "dbsize": {
+        "forward": [
+            "作用",
+            "返回值"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "$limit": {
+        "forward": [
+            "作用"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "setex": {
+        "forward": [
+            "作用",
+            "参数说明"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "zrank": {
+        "forward": [
+            "作用",
+            "参数说明"
+        ],
         "backward": [
             "常用命令"
         ]
@@ -391,494 +1551,95 @@
             "实现方式"
         ]
     },
-    "dbfilename dump.rdb": {
-        "forward": [],
-        "backward": [
+    "punsubscribe": {
+        "forward": [
+            "作用",
             "参数说明"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "添加字段": {
+        "forward": [
+            "常用命令"
+        ],
+        "backward": [
+            "实现方式"
+        ]
+    },
+    "管道": {
+        "forward": [
+            "常用命令",
+            "简介"
+        ],
+        "backward": [
+            "实现方式"
+        ]
+    },
+    "sinterstore": {
+        "forward": [
+            "作用",
+            "参数说明"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "pubsub numpat": {
+        "forward": [
+            "作用"
+        ],
+        "backward": [
+            "包括"
+        ]
+    },
+    "hmget": {
+        "forward": [
+            "作用",
+            "参数说明"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "null值": {
+        "forward": [
+            "实现方式",
+            "常用命令"
+        ],
+        "backward": [
+            "实现方式"
+        ]
+    },
+    "move": {
+        "forward": [
+            "作用",
+            "参数说明"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "sunionstore": {
+        "forward": [
+            "作用",
+            "参数说明"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "incr key": {
+        "forward": [
+            "作用",
+            "参数说明"
+        ],
+        "backward": [
+            "常用命令"
         ]
     },
     "连接mongodb数据库": {
-        "forward": [
-            "常用命令"
-        ],
-        "backward": []
-    },
-    "获取所有(一个或多个)给定 key 的值。": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "挂起客户端连接，指定挂起的时间以毫秒计": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "with rollup 可以实现在分组统计数据基础上再进行相同的统计": {
-        "forward": [],
-        "backward": []
-    },
-    "show dbs": {
-        "forward": [],
-        "backward": [
-            "常用命令"
-        ]
-    },
-    "执行insert into 语句": {
-        "forward": [],
-        "backward": [
-            "常用命令"
-        ]
-    },
-    "安装管理": {
-        "forward": [
-            "安装平台",
-            "实现方式"
-        ],
-        "backward": [
-            "运维操作"
-        ]
-    },
-    "移除 key 的过期时间，key 将持久保持。": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "pivot": {
-        "forward": [],
-        "backward": [
-            "参数说明"
-        ]
-    },
-    "分区": {
-        "forward": [
-            "优点",
-            "实现方式",
-            "缺点"
-        ],
-        "backward": [
-            "实现方式"
-        ]
-    },
-    "skip": {
-        "forward": [
-            "作用"
-        ],
-        "backward": [
-            "常用命令"
-        ]
-    },
-    "zcard": {
-        "forward": [
-            "作用",
-            "参数说明"
-        ],
-        "backward": []
-    },
-    "set": {
-        "forward": [
-            "作用",
-            "参数说明"
-        ],
-        "backward": []
-    },
-    "del": {
-        "forward": [
-            "作用",
-            "参数说明"
-        ],
-        "backward": []
-    },
-    "实时打印出 redis 服务器接收到的命令，调试用": {
-        "forward": [],
-        "backward": []
-    },
-    "xgroup destroy": {
-        "forward": [
-            "作用",
-            "参数说明"
-        ],
-        "backward": []
-    },
-    "hincrbyfloat": {
-        "forward": [
-            "作用",
-            "参数说明"
-        ],
-        "backward": []
-    },
-    "key 所储存的值减去给定的减量值（decrement） 。": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "command info": {
-        "forward": [
-            "作用",
-            "参数说明"
-        ],
-        "backward": []
-    },
-    "只有在 key 不存在时设置 key 的值。": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "lpushx": {
-        "forward": [
-            "作用",
-            "参数说明"
-        ],
-        "backward": []
-    },
-    "vm-enabled no": {
-        "forward": [],
-        "backward": [
-            "参数说明"
-        ]
-    },
-    "slowlog len": {
-        "forward": [
-            "作用"
-        ],
-        "backward": []
-    },
-    "临时表": {
-        "forward": [
-            "常用命令"
-        ],
-        "backward": [
-            "实现方式"
-        ]
-    },
-    "index": {
-        "forward": [],
-        "backward": [
-            "参数说明"
-        ]
-    },
-    "redis": {
-        "forward": [
-            "简介",
-            "运维操作",
-            "属于"
-        ],
-        "backward": []
-    },
-    "arg [arg ...]": {
-        "forward": [],
-        "backward": [
-            "参数说明"
-        ]
-    },
-    "返回给定所有集合的差集并存储在 destination 中": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "将集合中的文档分组，可用于统计结果": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "将哈希表 key 中的字段 field 的值设为 value 。": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "移出并获取列表的第一个元素": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "client list": {
-        "forward": [
-            "作用",
-            "返回值"
-        ],
-        "backward": []
-    },
-    "返回有序集中，成员的分数值": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "关闭客户端连接": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "sync": {
-        "forward": [
-            "作用"
-        ],
-        "backward": []
-    },
-    "scan": {
-        "forward": [
-            "作用",
-            "参数说明"
-        ],
-        "backward": []
-    },
-    "创建数据库": {
-        "forward": [
-            "常用命令"
-        ],
-        "backward": [
-            "实现方式"
-        ]
-    },
-    "limit": {
-        "forward": [
-            "作用"
-        ],
-        "backward": [
-            "参数说明",
-            "常用命令"
-        ]
-    },
-    "key": {
-        "forward": [],
-        "backward": [
-            "参数说明"
-        ]
-    },
-    "sscan": {
-        "forward": [
-            "作用",
-            "参数说明"
-        ],
-        "backward": []
-    },
-    "程序代码连接": {
-        "forward": [
-            "常用命令"
-        ],
-        "backward": [
-            "实现方式"
-        ]
-    },
-    "withcoord": {
-        "forward": [],
-        "backward": []
-    },
-    "time": {
-        "forward": [
-            "作用"
-        ],
-        "backward": []
-    },
-    "$min": {
-        "forward": [],
-        "backward": [
-            "参数说明"
-        ]
-    },
-    "zrange": {
-        "forward": [
-            "作用",
-            "参数说明"
-        ],
-        "backward": []
-    },
-    "insertone": {
-        "forward": [
-            "作用",
-            "参数说明"
-        ],
-        "backward": []
-    },
-    "用于检测给定的密码和配置文件中的密码是否相符。": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "weights": {
-        "forward": [],
-        "backward": [
-            "参数说明"
-        ]
-    },
-    "xdel": {
-        "forward": [
-            "作用",
-            "参数说明"
-        ],
-        "backward": []
-    },
-    "cursor": {
-        "forward": [],
-        "backward": [
-            "参数说明"
-        ]
-    },
-    "vm-pages 134217728": {
-        "forward": [],
-        "backward": [
-            "参数说明"
-        ]
-    },
-    "创建索引": {
-        "forward": [
-            "常用命令"
-        ],
-        "backward": [
-            "实现方式"
-        ]
-    },
-    "false": {
-        "forward": [],
-        "backward": []
-    },
-    "pubsub": {
-        "forward": [
-            "作用",
-            "参数说明",
-            "包括"
-        ],
-        "backward": []
-    },
-    "$sum": {
-        "forward": [],
-        "backward": [
-            "参数说明"
-        ]
-    },
-    "排序": {
-        "forward": [
-            "常用命令",
-            "实现方式"
-        ],
-        "backward": [
-            "作用",
-            "实现方式"
-        ]
-    },
-    "配置mongodb服务": {
-        "forward": [
-            "配置过程"
-        ],
-        "backward": []
-    },
-    "只有在字段 field 不存在时，设置哈希表字段的值。": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "非关系型数据库": {
-        "forward": [
-            "包括"
-        ],
-        "backward": [
-            "属于",
-            "包括"
-        ]
-    },
-    "返回 key 中字符串值的子字符": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "将多个 hyperloglog 合并为一个 hyperloglog": {
-        "forward": [],
-        "backward": []
-    },
-    "将 key 所储存的值加上给定的增量值（increment） 。": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "sdiffstore": {
-        "forward": [
-            "作用",
-            "参数说明"
-        ],
-        "backward": []
-    },
-    "获取有序集合的成员数": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "查看当前日志的数量": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "移除集合中一个或多个成员": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    " increment": {
-        "forward": [],
-        "backward": [
-            "参数说明"
-        ]
-    },
-    "$unwind": {
-        "forward": [
-            "作用"
-        ],
-        "backward": [
-            "常用命令"
-        ]
-    },
-    "地理位置存储": {
-        "forward": [
-            "常用命令"
-        ],
-        "backward": [
-            "实现方式"
-        ]
-    },
-    "unsubscribe": {
-        "forward": [
-            "作用",
-            "参数说明"
-        ],
-        "backward": []
-    },
-    "将输入文档排序后输出。": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "对 key 所储存的字符串值，获取指定偏移量上的位(bit)。": {
-        "forward": [
-            "参数说明"
-        ],
-        "backward": [
-            "作用"
-        ]
-    },
-    "spop": {
-        "forward": [
-            "作用",
-            "参数说明"
-        ],
-        "backward": []
-    },
-    "复制表": {
         "forward": [
             "常用命令"
         ],
@@ -890,132 +1651,26 @@
         "forward": [
             "作用"
         ],
-        "backward": []
-    },
-    "获取集合的成员数": {
-        "forward": [],
         "backward": [
-            "作用"
-        ]
-    },
-    "v": {
-        "forward": [],
-        "backward": [
-            "参数说明"
-        ]
-    },
-    "使用正则表达式": {
-        "forward": [],
-        "backward": []
-    },
-    "timeout": {
-        "forward": [],
-        "backward": [
-            "参数说明"
-        ]
-    },
-    "db": {
-        "forward": [],
-        "backward": [
-            "参数说明"
-        ]
-    },
-    "hsetnx": {
-        "forward": [
-            "作用",
-            "参数说明"
-        ],
-        "backward": []
-    },
-    "ttl": {
-        "forward": [
-            "作用",
-            "参数说明"
-        ],
-        "backward": []
-    },
-    "seconds": {
-        "forward": [],
-        "backward": [
-            "参数说明"
-        ]
-    },
-    "member": {
-        "forward": [],
-        "backward": [
-            "参数说明"
-        ]
-    },
-    "group by 语句根据一个或多个列对结果集进行分组": {
-        "forward": [],
-        "backward": []
-    },
-    "使用索引": {
-        "forward": [
-            "实现方式"
-        ],
-        "backward": [
-            "实现方式"
-        ]
-    },
-    "用于当前的集群状态，以数组形式展示。": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "管道技术": {
-        "forward": [
-            "优点"
-        ],
-        "backward": [
-            "实现方式"
-        ]
-    },
-    "redis 命令数": {
-        "forward": [],
-        "backward": [
-            "返回值"
-        ]
-    },
-    "在sql select 语句中使用 order by 子句": {
-        "forward": [
             "常用命令"
-        ],
-        "backward": []
-    },
-    "状态监控": {
-        "forward": [
-            "实现方式"
-        ],
-        "backward": [
-            "运维操作"
         ]
     },
-    "keys": {
+    "mysql": {
+        "forward": [
+            "运维操作",
+            "属于"
+        ],
+        "backward": [
+            "包括"
+        ]
+    },
+    "hlen": {
         "forward": [
             "作用",
             "参数说明"
         ],
-        "backward": []
-    },
-    "client getname": {
-        "forward": [
-            "作用",
-            "返回值"
-        ],
-        "backward": []
-    },
-    "切换到指定的数据库": {
-        "forward": [],
         "backward": [
-            "作用"
-        ]
-    },
-    "ordered": {
-        "forward": [],
-        "backward": [
-            "参数说明"
+            "常用命令"
         ]
     },
     "存储管理": {
@@ -1026,133 +1681,76 @@
             "运维操作"
         ]
     },
-    "使用crate创建sql语句": {
-        "forward": [],
-        "backward": [
-            "常用命令"
-        ]
-    },
-    "计算给定的一个或多个有序集的并集，并存储在新的 key 中": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "script": {
-        "forward": [],
-        "backward": [
-            "参数说明"
-        ]
-    },
-    "同时将多个 field-value (域-值)对设置到哈希表 key 中。": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "杀死当前正在运行的 lua 脚本。": {
-        "forward": [],
-        "backward": []
-    },
-    "key [key ...]": {
-        "forward": [],
-        "backward": [
-            "参数说明"
-        ]
-    },
-    "show tables": {
-        "forward": [],
-        "backward": [
-            "常用命令"
-        ]
-    },
-    "hincrby": {
-        "forward": [
-            "作用",
-            "参数说明"
-        ],
-        "backward": []
-    },
-    "port": {
-        "forward": [],
-        "backward": [
-            "参数说明"
-        ]
-    },
-    "id": {
-        "forward": [],
-        "backward": []
-    },
-    "查看指定的脚本是否已经被保存在缓存当中。": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "获取列表长度": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "connection-name": {
-        "forward": [],
-        "backward": [
-            "参数说明"
-        ]
-    },
-    "like通配符": {
+    "修改表名": {
         "forward": [
             "常用命令"
         ],
-        "backward": []
-    },
-    "glueoutputbuf yes": {
-        "forward": [],
-        "backward": [
-            "参数说明"
-        ]
-    },
-    "rename": {
-        "forward": [
-            "作用",
-            "参数说明"
-        ],
-        "backward": []
-    },
-    "getset": {
-        "forward": [
-            "作用",
-            "参数说明"
-        ],
-        "backward": []
-    },
-    "返回当前数据库的 key 的数量": {
-        "forward": [],
-        "backward": [
-            "作用",
-            "返回值"
-        ]
-    },
-    "范围分区": {
-        "forward": [],
         "backward": [
             "实现方式"
         ]
     },
-    "数据库": {
+    "set": {
         "forward": [
-            "包括"
+            "作用",
+            "参数说明"
         ],
-        "backward": []
-    },
-    "返回一个或多个位置对象的 geohash 值。作用": {
-        "forward": [],
         "backward": [
-            "作用"
+            "常用命令"
         ]
     },
-    "连接数据库": {
+    "sismember": {
+        "forward": [
+            "作用",
+            "参数说明"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "zrem": {
+        "forward": [
+            "作用",
+            "参数说明"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "聚合": {
+        "forward": [
+            "常用命令",
+            "实现方式"
+        ],
+        "backward": [
+            "实现方式"
+        ]
+    },
+    "redis hyperloglog": {
+        "forward": [
+            "常用命令"
+        ],
+        "backward": [
+            "实现方式"
+        ]
+    },
+    "remove": {
+        "forward": [
+            "作用",
+            "参数说明"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "程序代码连接": {
+        "forward": [
+            "常用命令"
+        ],
+        "backward": [
+            "实现方式"
+        ]
+    },
+    "状态监控": {
         "forward": [
             "实现方式"
         ],
@@ -1160,7 +1758,16 @@
             "运维操作"
         ]
     },
-    "数据处理": {
+    "hsetnx": {
+        "forward": [
+            "作用",
+            "参数说明"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "请求管理": {
         "forward": [
             "实现方式"
         ],
@@ -1168,33 +1775,21 @@
             "运维操作"
         ]
     },
-    "$max": {
-        "forward": [],
+    "安全管控": {
+        "forward": [
+            "实现方式"
+        ],
         "backward": [
+            "运维操作"
+        ]
+    },
+    "dump": {
+        "forward": [
+            "作用",
             "参数说明"
-        ]
-    },
-    "删除集合": {
-        "forward": [
+        ],
+        "backward": [
             "常用命令"
-        ],
-        "backward": [
-            "实现方式"
-        ]
-    },
-    "发布订阅": {
-        "forward": [
-            "实现方式",
-            "缺点"
-        ],
-        "backward": [
-            "实现方式"
-        ]
-    },
-    "返回给定所有集合的交集": {
-        "forward": [],
-        "backward": [
-            "作用"
         ]
     },
     "监控": {
@@ -1205,103 +1800,7 @@
             "实现方式"
         ]
     },
-    "publish": {
-        "forward": [
-            "作用",
-            "参数说明"
-        ],
-        "backward": []
-    },
-    "将当前数据库的 key 移动到给定的数据库 db 当中。": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "返回当前服务器时间": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "通过字典区间返回有序集合的成员": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "xread": {
-        "forward": [
-            "作用",
-            "参数说明"
-        ],
-        "backward": []
-    },
-    "echo": {
-        "forward": [
-            "作用",
-            "参数说明"
-        ],
-        "backward": []
-    },
-    "shutdown [nosave] [save]": {
-        "forward": [
-            "作用"
-        ],
-        "backward": []
-    },
-    "drop": {
-        "forward": [
-            "返回值"
-        ],
-        "backward": [
-            "常用命令"
-        ]
-    },
-    "迭代有序集合中的元素（包括元素成员和元素分值）": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "stop": {
-        "forward": [],
-        "backward": [
-            "参数说明"
-        ]
-    },
-    "pubsub channels": {
-        "forward": [
-            "作用",
-            "参数说明"
-        ],
-        "backward": []
-    },
-    "显示待处理消息的相关信息": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "使用序列": {
-        "forward": [],
-        "backward": [
-            "实现方式"
-        ]
-    },
-    "移除列表的最后一个元素，返回值为移除的元素。": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "获取列表指定范围内的元素": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "数据增删改查": {
+    "数据处理": {
         "forward": [
             "实现方式"
         ],
@@ -1309,146 +1808,81 @@
             "运维操作"
         ]
     },
-    "同时设置一个或多个 key-value 对。": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "返回有序集合中指定成员的排名，有序集成员按分数值递减(从大到小)排序": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "createindex": {
+    "geohash": {
         "forward": [
             "作用",
             "参数说明"
         ],
-        "backward": []
-    },
-    "脚本": {
-        "forward": [
-            "常用命令"
-        ],
         "backward": [
-            "实现方式"
+            "常用命令"
         ]
     },
-    "zunionstore": {
-        "forward": [
-            "作用",
-            "参数说明"
-        ],
-        "backward": []
-    },
-    "redis 键(key)": {
-        "forward": [
-            "常用命令"
-        ],
-        "backward": []
-    },
-    "unique": {
-        "forward": [],
-        "backward": [
-            "参数说明"
-        ]
-    },
-    "mongodb数据库": {
+    "mongodb": {
         "forward": [
             "简介",
             "特点",
             "运维操作",
             "属于"
         ],
-        "backward": []
+        "backward": [
+            "包括"
+        ]
     },
-    "ok": {
-        "forward": [],
-        "backward": []
-    },
-    "append": {
+    "hmset": {
         "forward": [
             "作用",
             "参数说明"
         ],
-        "backward": []
-    },
-    "查找所有符合给定模式( pattern)的 key 。": {
-        "forward": [],
         "backward": [
-            "作用"
-        ]
-    },
-    "获取通过 client setname 命令设置的服务名称": {
-        "forward": [],
-        "backward": []
-    },
-    "ip:port": {
-        "forward": [],
-        "backward": [
-            "参数说明"
-        ]
-    },
-    "命令行语句连接": {
-        "forward": [
             "常用命令"
+        ]
+    },
+    "limit": {
+        "forward": [
+            "作用"
         ],
         "backward": [
-            "实现方式"
-        ]
-    },
-    "查看服务是否运行": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "移除并返回集合中的一个随机元素": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "subcommand": {
-        "forward": [],
-        "backward": [
+            "常用命令",
             "参数说明"
         ]
     },
-    "get": {
+    "zinterstore": {
         "forward": [
             "作用",
             "参数说明"
         ],
-        "backward": []
-    },
-    "用于过滤数据，只输出符合条件的文档。$match使用mongodb的标准查询操作。": {
-        "forward": [],
-        "backward": []
-    },
-    "数据备份": {
-        "forward": [
+        "backward": [
             "常用命令"
-        ],
-        "backward": [
-            "实现方式"
         ]
     },
-    "返回主从实例所属的角色": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "flushdb": {
+    "persist": {
         "forward": [
-            "作用"
+            "作用",
+            "参数说明"
         ],
-        "backward": []
+        "backward": [
+            "常用命令"
+        ]
     },
-    "数据类型": {
+    "mset": {
+        "forward": [
+            "作用",
+            "参数说明"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "zremrangebyscore": {
+        "forward": [
+            "作用",
+            "参数说明"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "日期和时间类型": {
         "forward": [
             "包括"
         ],
@@ -1456,220 +1890,200 @@
             "实现方式"
         ]
     },
-    "debug object": {
-        "forward": [
-            "作用",
-            "参数说明",
-            "返回值"
-        ],
-        "backward": []
-    },
-    "timeout 300": {
-        "forward": [],
-        "backward": [
-            "参数说明"
-        ]
-    },
-    "在 sql select 语句中使用": {
-        "forward": [],
-        "backward": []
-    },
-    "执行 lua 脚本。": {
-        "forward": [],
-        "backward": []
-    },
-    "获取所有哈希表中的字段": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "zremrangebyrank": {
-        "forward": [
-            "作用",
-            "参数说明"
-        ],
-        "backward": []
-    },
-    "sinter": {
-        "forward": [
-            "作用",
-            "参数说明"
-        ],
-        "backward": []
-    },
-    "incrby": {
-        "forward": [
-            "作用",
-            "参数说明"
-        ],
-        "backward": []
-    },
-    "设置当前连接的名称": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "include /path/to/local.conf": {
-        "forward": [],
-        "backward": [
-            "参数说明"
-        ]
-    },
-    "<path>": {
-        "forward": [],
-        "backward": [
-            "参数说明"
-        ]
-    },
-    "zrank": {
-        "forward": [
-            "作用",
-            "参数说明"
-        ],
-        "backward": []
-    },
-    "strlen": {
-        "forward": [
-            "作用",
-            "参数说明"
-        ],
-        "backward": []
-    },
-    "renamenx": {
-        "forward": [
-            "作用",
-            "参数说明"
-        ],
-        "backward": []
-    },
-    "windows": {
-        "forward": [
-            "安装过程",
-            "配置过程",
-            "实现方式"
-        ],
-        "backward": []
-    },
-    "macos": {
-        "forward": [],
-        "backward": []
-    },
     "client kill": {
         "forward": [
             "作用",
             "参数说明",
             "返回值"
         ],
-        "backward": []
+        "backward": [
+            "常用命令",
+            "包括"
+        ]
     },
-    "hexists": {
+    "rpop": {
         "forward": [
             "作用",
             "参数说明"
         ],
-        "backward": []
-    },
-    "destination": {
-        "forward": [],
         "backward": [
-            "参数说明"
+            "常用命令"
         ]
     },
-    "info [section]": {
+    "config set": {
         "forward": [
-            "作用"
+            "作用",
+            "实例",
+            "参数说明",
+            "返回值"
         ],
-        "backward": []
-    },
-    "打印消费者组的信息": {
-        "forward": [],
         "backward": [
-            "作用"
+            "常用命令"
         ]
     },
-    "安装mongodb数据库": {
-        "forward": [
-            "安装过程"
-        ],
-        "backward": []
-    },
-    "用于在新的 key 不存在时修改 key 的名称 。": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "将消息标记为\"已处理\"": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "map": {
-        "forward": [],
-        "backward": [
-            "参数说明"
-        ]
-    },
-    "rpushx": {
+    "getrange": {
         "forward": [
             "作用",
             "参数说明"
         ],
-        "backward": []
-    },
-    "重置 info 命令中的某些统计数据": {
-        "forward": [],
-        "backward": []
-    },
-    "maxclients 128": {
-        "forward": [],
         "backward": [
-            "参数说明"
+            "常用命令"
         ]
     },
-    "name": {
-        "forward": [],
-        "backward": [
-            "参数说明"
-        ]
-    },
-    "size": {
-        "forward": [],
-        "backward": [
-            "参数说明"
-        ]
-    },
-    "pttl": {
+    "renamenx": {
         "forward": [
             "作用",
             "参数说明"
         ],
-        "backward": []
-    },
-    "返回订阅模式的数量。": {
-        "forward": [],
         "backward": [
-            "作用"
+            "常用命令"
         ]
     },
-    "zrevrange": {
+    "unsubscribe": {
         "forward": [
             "作用",
             "参数说明"
         ],
-        "backward": []
-    },
-    "writeconcern": {
-        "forward": [],
-        "backward": []
-    },
-    "获取哈希表中所有值。": {
-        "forward": [],
         "backward": [
+            "常用命令"
+        ]
+    },
+    "$group": {
+        "forward": [
             "作用"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "lpushx": {
+        "forward": [
+            "作用",
+            "参数说明"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "del": {
+        "forward": [
+            "作用",
+            "参数说明"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "incrbyfloat": {
+        "forward": [
+            "作用",
+            "参数说明"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "mysql数据库": {
+        "forward": [
+            "运维操作",
+            "属于"
+        ],
+        "backward": [
+            "包括"
+        ]
+    },
+    "redis 的配置文件位于 redis 安装目录下，文件名为 redis.conf(windows 名为 redis.windows.conf)。  你可以通过 config 命令查看或设置配置项。": {
+        "forward": [
+            "参数说明"
+        ],
+        "backward": [
+            "配置过程"
+        ]
+    },
+    "sscan": {
+        "forward": [
+            "作用",
+            "参数说明"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "config get parameter": {
+        "forward": [
+            "作用",
+            "参数说明"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "zscore": {
+        "forward": [
+            "作用",
+            "参数说明"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "exists": {
+        "forward": [
+            "作用",
+            "参数说明"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "删除字段": {
+        "forward": [
+            "常用命令"
+        ],
+        "backward": [
+            "实现方式"
+        ]
+    },
+    "pexpireat": {
+        "forward": [
+            "作用",
+            "参数说明"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "导出数据": {
+        "forward": [
+            "常用命令"
+        ],
+        "backward": [
+            "实现方式"
+        ]
+    },
+    "创建数据表": {
+        "forward": [
+            "常用命令"
+        ],
+        "backward": [
+            "实现方式"
+        ]
+    },
+    "lastsave": {
+        "forward": [
+            "作用"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "hincrby": {
+        "forward": [
+            "作用",
+            "参数说明"
+        ],
+        "backward": [
+            "常用命令"
         ]
     },
     "mget": {
@@ -1677,41 +2091,11 @@
             "作用",
             "参数说明"
         ],
-        "backward": []
-    },
-    "将脚本 script 添加到脚本缓存中，但并不立即执行这个脚本。": {
-        "forward": [],
         "backward": [
-            "作用"
+            "常用命令"
         ]
     },
-    "lrange": {
-        "forward": [
-            "作用",
-            "参数说明"
-        ],
-        "backward": []
-    },
-    "upsert": {
-        "forward": [],
-        "backward": [
-            "参数说明"
-        ]
-    },
-    "xadd": {
-        "forward": [
-            "作用",
-            "参数说明"
-        ],
-        "backward": []
-    },
-    "移出并获取列表的第一个元素， 如果列表没有元素会阻塞列表直到等待超时或发现可弹出元素为止。": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "查询集合": {
+    "新增数据": {
         "forward": [
             "常用命令"
         ],
@@ -1719,225 +2103,32 @@
             "实现方式"
         ]
     },
-    "使用分片": {
-        "forward": [],
+    "创建索引": {
+        "forward": [
+            "常用命令"
+        ],
         "backward": [
             "实现方式"
         ]
     },
-    "反向获取消息列表，id 从大到小": {
-        "forward": [],
-        "backward": []
-    },
-    "load data导入": {
-        "forward": [],
-        "backward": []
-    },
-    "null值处理": {
-        "forward": [
-            "常用命令"
-        ],
-        "backward": []
-    },
-    "redis连接命令": {
-        "forward": [
-            "常用命令"
-        ],
-        "backward": []
-    },
-    "parameter": {
-        "forward": [],
-        "backward": [
-            "参数说明"
-        ]
-    },
-    "设置 key 的过期时间以毫秒计。": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "bgsave": {
-        "forward": [
-            "作用"
-        ],
-        "backward": []
-    },
-    "以秒为单位，返回给定 key 的剩余生存时间(ttl, time to live)。": {
-        "forward": [],
-        "backward": []
-    },
-    "用于打印给定的字符串。": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "timestamp": {
-        "forward": [],
-        "backward": [
-            "参数说明"
-        ]
-    },
-    "移除有序集合中给定的排名区间的所有成员": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "dbsize": {
-        "forward": [
-            "作用",
-            "返回值"
-        ],
-        "backward": []
-    },
-    "number": {
-        "forward": [],
-        "backward": [
-            "参数说明"
-        ]
-    },
-    "zadd": {
-        "forward": [
-            "作用",
-            "参数说明"
-        ],
-        "backward": []
-    },
-    "查询优化": {
+    "数据备份与恢复": {
         "forward": [
             "实现方式"
         ],
         "backward": [
-            "运维操作"
+            "实现方式"
         ]
     },
-    "退订所有给定模式的频道。": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "lset": {
+    "sdiffstore": {
         "forward": [
             "作用",
             "参数说明"
-        ],
-        "backward": []
-    },
-    "georadiusbymember": {
-        "forward": [
-            "作用",
-            "参数说明"
-        ],
-        "backward": []
-    },
-    "sdiff": {
-        "forward": [
-            "作用",
-            "参数说明"
-        ],
-        "backward": []
-    },
-    "如果连接没有设置名字，那么返回空白回复； 如果有设置名字，那么返回名字。": {
-        "forward": [],
-        "backward": [
-            "返回值"
-        ]
-    },
-    "georadius": {
-        "forward": [
-            "作用",
-            "参数说明"
-        ],
-        "backward": []
-    },
-    "brpop": {
-        "forward": [
-            "作用",
-            "参数说明"
-        ],
-        "backward": []
-    },
-    "对流进行修剪，限制长度": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "decrby": {
-        "forward": [
-            "作用",
-            "参数说明"
-        ],
-        "backward": []
-    },
-    "所有给定集合的并集存储在 destination 集合中": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "pexpire": {
-        "forward": [
-            "作用",
-            "参数说明"
-        ],
-        "backward": []
-    },
-    "将值 value 关联到 key ，并将 key 的过期时间设为 seconds (以秒为单位)。": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "迭代集合中的元素": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "安装mongodb服务": {
-        "forward": [
-            "安装过程"
-        ],
-        "backward": []
-    },
-    "use": {
-        "forward": [],
-        "backward": [
-            "常用命令"
-        ]
-    },
-    "指退订给定的频道。": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "insertmany": {
-        "forward": [
-            "作用",
-            "参数说明"
-        ],
-        "backward": []
-    },
-    "为已存在的列表添加值": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "mongotop": {
-        "forward": [
-            "作用"
         ],
         "backward": [
             "常用命令"
         ]
     },
-    "remove": {
+    "hincrbyfloat": {
         "forward": [
             "作用",
             "参数说明"
@@ -1954,139 +2145,13 @@
             "实现方式"
         ]
     },
-    "$group": {
+    "smove": {
         "forward": [
-            "作用"
+            "作用",
+            "参数说明"
         ],
         "backward": [
             "常用命令"
-        ]
-    },
-    "end": {
-        "forward": [],
-        "backward": [
-            "参数说明"
-        ]
-    },
-    "通过索引设置列表元素的值": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "hlen": {
-        "forward": [
-            "作用",
-            "参数说明"
-        ],
-        "backward": []
-    },
-    "将 key 中储存的数字值增一。": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "-h": {
-        "forward": [],
-        "backward": [
-            "参数说明"
-        ]
-    },
-    "background": {
-        "forward": [],
-        "backward": [
-            "参数说明"
-        ]
-    },
-    "读取消费者组中的消息": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "为哈希表 key 中的指定字段的整数值加上增量 increment 。": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "setex": {
-        "forward": [
-            "作用",
-            "参数说明"
-        ],
-        "backward": []
-    },
-    "查询数据库": {
-        "forward": [
-            "常用命令"
-        ],
-        "backward": [
-            "实现方式"
-        ]
-    },
-    "sinterstore": {
-        "forward": [
-            "作用",
-            "参数说明"
-        ],
-        "backward": []
-    },
-    "createcollection": {
-        "forward": [
-            "参数说明"
-        ],
-        "backward": []
-    },
-    "xack": {
-        "forward": [
-            "作用"
-        ],
-        "backward": []
-    },
-    "score": {
-        "forward": [],
-        "backward": [
-            "参数说明"
-        ]
-    },
-    "获取 redis 目录": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "用于在后台异步保存当前数据库的数据到磁盘。": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "rpop": {
-        "forward": [
-            "作用",
-            "参数说明"
-        ],
-        "backward": []
-    },
-    "projection": {
-        "forward": [],
-        "backward": [
-            "参数说明"
-        ]
-    },
-    "type": {
-        "forward": [
-            "作用",
-            "参数说明"
-        ],
-        "backward": []
-    },
-    "rdbcompression yes": {
-        "forward": [],
-        "backward": [
-            "参数说明"
         ]
     },
     "hset": {
@@ -2094,9 +2159,11 @@
             "作用",
             "参数说明"
         ],
-        "backward": []
+        "backward": [
+            "常用命令"
+        ]
     },
-    "导入数据": {
+    "更新数据": {
         "forward": [
             "常用命令"
         ],
@@ -2104,943 +2171,21 @@
             "实现方式"
         ]
     },
-    "hdel": {
+    "createcollection": {
         "forward": [
-            "作用",
-            "参数说明"
-        ],
-        "backward": []
-    },
-    "withdist": {
-        "forward": [],
-        "backward": []
-    },
-    "script flush": {
-        "forward": [
-            "作用"
-        ],
-        "backward": []
-    },
-    "数据恢复": {
-        "forward": [
-            "常用命令"
-        ],
-        "backward": [
-            "实现方式"
-        ]
-    },
-    "slowlog reset": {
-        "forward": [
-            "作用"
-        ],
-        "backward": []
-    },
-    "获取哈希表中字段的数量": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "element": {
-        "forward": [],
-        "backward": [
-            "参数说明"
-        ]
-    },
-    "daemonize no": {
-        "forward": [],
-        "backward": [
-            "参数说明"
-        ]
-    },
-    "max": {
-        "forward": [],
-        "backward": [
-            "参数说明"
-        ]
-    },
-    "数据备份与恢复": {
-        "forward": [
-            "实现方式"
-        ],
-        "backward": [
-            "实现方式"
-        ]
-    },
-    "sql select 语句使用 like 子句": {
-        "forward": [],
-        "backward": []
-    },
-    "向有序集合添加一个或多个成员，或者更新已存在成员的分数": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "高级索引": {
-        "forward": [],
-        "backward": [
-            "实现方式"
-        ]
-    },
-    "迭代哈希表中的键值对。": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "用来移除集合中的数据": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "重复数据": {
-        "forward": [
-            "实现方式"
-        ],
-        "backward": [
-            "实现方式"
-        ]
-    },
-    "--db , -d ": {
-        "forward": [],
-        "backward": [
-            "参数说明"
-        ]
-    },
-    "将给定 key 的值设为 value ，并返回 key 的旧值(old value)。": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "请求管理": {
-        "forward": [
-            "实现方式"
-        ],
-        "backward": [
-            "运维操作"
-        ]
-    },
-    "xgroup setid": {
-        "forward": [
-            "作用",
-            "参数说明"
-        ],
-        "backward": []
-    },
-    "persist": {
-        "forward": [
-            "作用",
-            "参数说明"
-        ],
-        "backward": []
-    },
-    "command-name": {
-        "forward": [],
-        "backward": [
-            "参数说明"
-        ]
-    },
-    "元数据": {
-        "forward": [],
-        "backward": [
-            "实现方式"
-        ]
-    },
-    "slowlog get": {
-        "forward": [
-            "作用",
-            "参数说明"
-        ],
-        "backward": []
-    },
-    "redis 服务器命令": {
-        "forward": [
-            "常用命令"
-        ],
-        "backward": []
-    },
-    "slaveof": {
-        "forward": [
-            "作用",
-            "参数说明"
-        ],
-        "backward": []
-    },
-    "跳过制定数量": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "true": {
-        "forward": [],
-        "backward": []
-    },
-    "activerehashing yes": {
-        "forward": [],
-        "backward": [
-            "参数说明"
-        ]
-    },
-    "移除有序集合中给定的分数区间的所有成员": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "linsert": {
-        "forward": [
-            "作用",
-            "参数说明"
-        ],
-        "backward": []
-    },
-    "更新文档": {
-        "forward": [
-            "常用命令"
-        ],
-        "backward": [
-            "实现方式"
-        ]
-    },
-    "移除列表的最后一个元素，并将该元素添加到另一个列表并返回": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "返回有序集合中指定成员的索引": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "smembers": {
-        "forward": [
-            "作用",
-            "参数说明"
-        ],
-        "backward": []
-    },
-    "latitude": {
-        "forward": [],
-        "backward": [
-            "参数说明"
-        ]
-    },
-    "通过索引获取列表中的元素": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "使用聚合": {
-        "forward": [
-            "常用命令",
-            "实现方式"
-        ],
-        "backward": [
-            "实现方式"
-        ]
-    },
-    "返回连接到 redis 服务的客户端列表": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "incrbyfloat": {
-        "forward": [
-            "作用",
-            "参数说明"
-        ],
-        "backward": []
-    },
-    "输出接近某一地理位置的有序文档。": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "dump": {
-        "forward": [
-            "作用",
-            "参数说明"
-        ],
-        "backward": []
-    },
-    "连接管理": {
-        "forward": [
-            "实现方式"
-        ],
-        "backward": [
-            "运维操作"
-        ]
-    },
-    "返回 ok； 如果 timeout 参数是非法的，返回错误": {
-        "forward": [],
-        "backward": []
-    },
-    "unique（唯一）": {
-        "forward": [],
-        "backward": []
-    },
-    "列出当前的活跃频道。": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "将 member 元素从 source 集合移动到 destination 集合": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "获取所有给定字段的值": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "bind 127.0.0.1": {
-        "forward": [],
-        "backward": [
-            "参数说明"
-        ]
-    },
-    "数据管理": {
-        "forward": [
-            "实现方式"
-        ],
-        "backward": [
-            "运维操作"
-        ]
-    },
-    "hmget": {
-        "forward": [
-            "作用",
-            "参数说明"
-        ],
-        "backward": []
-    },
-    "auth": {
-        "forward": [
-            "作用",
-            "参数说明"
-        ],
-        "backward": []
-    },
-    "存储优化": {
-        "forward": [
-            "实现方式"
-        ],
-        "backward": [
-            "运维操作"
-        ]
-    },
-    "$": {
-        "forward": [],
-        "backward": [
-            "参数说明"
-        ]
-    },
-    "lpop": {
-        "forward": [
-            "作用",
-            "参数说明"
-        ],
-        "backward": []
-    },
-    "修改": {
-        "forward": [
-            "实现方式"
-        ],
-        "backward": [
-            "实现方式"
-        ]
-    },
-    "slaveof <masterip> <masterport>": {
-        "forward": [],
-        "backward": [
-            "参数说明"
-        ]
-    },
-    "订阅": {
-        "forward": [
-            "常用命令"
-        ],
-        "backward": [
-            "实现方式"
-        ]
-    },
-    "punsubscribe": {
-        "forward": [
-            "作用",
-            "参数说明"
-        ],
-        "backward": []
-    },
-    "xrevrange": {
-        "forward": [
-            "作用",
-            "参数说明"
-        ],
-        "backward": []
-    },
-    "zrem": {
-        "forward": [
-            "作用",
-            "参数说明"
-        ],
-        "backward": []
-    },
-    "导出数据": {
-        "forward": [
-            "常用命令"
-        ],
-        "backward": [
-            "实现方式"
-        ]
-    },
-    "移除有序集合中给定的字典区间的所有成员": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "--dir": {
-        "forward": [],
-        "backward": [
-            "参数说明"
-        ]
-    },
-    "序列化给定 key ，并返回被序列化的值。": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "同时设置一个或多个 key-value 对，当且仅当所有给定 key 都不存在。": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "修改 redis 配置参数，无需重启": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "订阅给定的一个或多个频道的信息。": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "正则表达式": {
-        "forward": [
-            "常用命令"
-        ],
-        "backward": [
-            "实现方式"
-        ]
-    },
-    "返回集合中的所有成员": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "randomkey": {
-        "forward": [
-            "作用"
-        ],
-        "backward": []
-    },
-    "导入/导出数据": {
-        "forward": [
-            "实现方式"
-        ],
-        "backward": [
-            "运维操作"
-        ]
-    },
-    "$push": {
-        "forward": [],
-        "backward": [
-            "参数说明"
-        ]
-    },
-    "将 key 所储存的值加上给定的浮点增量值（increment） 。": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "返回 key 所储存的值的类型。": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "pubsub numsub": {
-        "forward": [
-            "作用",
-            "参数说明"
-        ],
-        "backward": []
-    },
-    "删除消息": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "cluster slots": {
-        "forward": [
-            "作用",
-            "返回值"
-        ],
-        "backward": []
-    },
-    "host": {
-        "forward": [],
-        "backward": [
-            "参数说明"
-        ]
-    },
-    "插入文档": {
-        "forward": [
-            "常用命令",
-            "实例"
-        ],
-        "backward": [
-            "实现方式"
-        ]
-    },
-    "mapreduce": {
-        "forward": [
-            "作用",
-            "参数说明",
-            "返回值"
-        ],
-        "backward": []
-    },
-    "mongodb使用 createindex() 方法来创建索引。": {
-        "forward": [],
-        "backward": []
-    },
-    "maxmemory <bytes>": {
-        "forward": [],
-        "backward": [
-            "参数说明"
-        ]
-    },
-    "当 key 存在时，返回有关信息。 当 key 不存在时，返回一个错误。": {
-        "forward": [],
-        "backward": [
-            "返回值"
-        ]
-    },
-    "用于向集合插入一个新文档。": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "dir ./": {
-        "forward": [],
-        "backward": [
-            "参数说明"
-        ]
-    },
-    "查询": {
-        "forward": [
-            "实现方式"
-        ],
-        "backward": [
-            "实现方式"
-        ]
-    },
-    "hkeys": {
-        "forward": [
-            "作用",
-            "参数说明"
-        ],
-        "backward": []
-    },
-    "lastsave": {
-        "forward": [
-            "作用"
-        ],
-        "backward": []
-    },
-    "sql注入": {
-        "forward": [
-            "实现方式"
-        ],
-        "backward": []
-    },
-    "xclaim": {
-        "forward": [
-            "作用"
-        ],
-        "backward": []
-    },
-    "quit": {
-        "forward": [
-            "作用"
-        ],
-        "backward": []
-    },
-    "管理 redis 的慢日志": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "asc": {
-        "forward": [],
-        "backward": []
-    },
-    "appendfilename appendonly.aof": {
-        "forward": [],
-        "backward": [
-            "参数说明"
-        ]
-    },
-    "$last": {
-        "forward": [],
-        "backward": [
-            "参数说明"
-        ]
-    },
-    "迭代数据库中的数据库键。": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "为给定 key 设置过期时间，以秒计。": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "brpoplpush": {
-        "forward": [
-            "作用",
-            "参数说明"
-        ],
-        "backward": []
-    },
-    "document": {
-        "forward": [],
-        "backward": [
-            "参数说明"
-        ]
-    },
-    "以毫秒为单位返回 key 的剩余的过期时间。": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "以阻塞或非阻塞方式获取消息列表": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "geodist": {
-        "forward": [
-            "作用",
-            "参数说明"
-        ],
-        "backward": []
-    },
-    "is null 或 is not null运算符": {
-        "forward": [],
-        "backward": []
-    },
-    "集合管理": {
-        "forward": [
-            "实现方式"
-        ],
-        "backward": [
-            "运维操作"
-        ]
-    },
-    "scard": {
-        "forward": [
-            "作用",
-            "参数说明"
-        ],
-        "backward": []
-    },
-    "在列表中添加一个或多个值": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "让 redis 服务崩溃": {
-        "forward": [],
-        "backward": []
-    },
-    "恢复数据": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "对 key 所储存的字符串值，设置或清除指定偏移量上的位(bit)。": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "判断 member 元素是否是集合 key 的成员": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "appendonly no": {
-        "forward": [],
-        "backward": [
-            "参数说明"
-        ]
-    },
-    "source命令导入": {
-        "forward": [],
-        "backward": [
-            "常用命令"
-        ]
-    },
-    "client-id": {
-        "forward": [],
-        "backward": [
-            "参数说明"
-        ]
-    },
-    "debug segfault": {
-        "forward": [
-            "作用"
-        ],
-        "backward": []
-    },
-    "incr key": {
-        "forward": [
-            "作用",
-            "参数说明"
-        ],
-        "backward": []
-    },
-    "获取指定 key 的值。": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "like子句": {
-        "forward": [
-            "常用命令"
-        ],
-        "backward": []
-    },
-    "查看订阅": {
-        "forward": [
-            "常用命令"
-        ],
-        "backward": [
-            "实现方式"
-        ]
-    },
-    "redis-cli": {
-        "forward": [
-            "作用",
-            "实例",
             "参数说明"
         ],
         "backward": [
             "常用命令"
         ]
     },
-    "mset": {
-        "forward": [
-            "作用",
-            "参数说明"
-        ],
-        "backward": []
-    },
-    "geopos": {
-        "forward": [
-            "作用",
-            "参数说明"
-        ],
-        "backward": []
-    },
-    "xtrim": {
-        "forward": [
-            "作用",
-            "参数说明"
-        ],
-        "backward": []
-    },
-    "获取 redis 命令总数": {
-        "forward": [],
-        "backward": []
-    },
-    "使用事务": {
-        "forward": [],
-        "backward": [
-            "实现方式"
-        ]
-    },
-    "loglevel notice": {
-        "forward": [],
-        "backward": [
-            "参数说明"
-        ]
-    },
-    "vm-swap-file /tmp/redis.swap": {
-        "forward": [],
-        "backward": [
-            "参数说明"
-        ]
-    },
-    "sha1": {
-        "forward": [],
-        "backward": [
-            "参数说明"
-        ]
-    },
-    "min": {
-        "forward": [],
-        "backward": [
-            "参数说明"
-        ]
-    },
-    "获取 redis 服务器的各种信息和统计数值": {
-        "forward": [],
-        "backward": []
-    },
-    "为消费者组设置新的最后递送消息id": {
-        "forward": [],
-        "backward": []
-    },
-    "该命令用于在 key 存在时删除 key。": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "capped": {
-        "forward": [],
-        "backward": [
-            "参数说明"
-        ]
-    },
-    "insert": {
+    "publish": {
         "forward": [
             "作用",
             "参数说明"
         ],
         "backward": [
             "常用命令"
-        ]
-    },
-    "eval": {
-        "forward": [
-            "作用",
-            "参数说明"
-        ],
-        "backward": []
-    },
-    "keys pattern": {
-        "forward": [],
-        "backward": []
-    },
-    "blpop": {
-        "forward": [
-            "作用",
-            "参数说明"
-        ],
-        "backward": []
-    },
-    "srandmember": {
-        "forward": [
-            "作用",
-            "参数说明"
-        ],
-        "backward": []
-    },
-    "xgroup delconsumer": {
-        "forward": [
-            "作用",
-            "参数说明"
-        ],
-        "backward": []
-    },
-    "客户端命令": {
-        "forward": [
-            "常用命令"
-        ],
-        "backward": [
-            "实现方式"
-        ]
-    },
-    "更新": {
-        "forward": [
-            "常用命令"
-        ],
-        "backward": [
-            "实现方式"
-        ]
-    },
-    "setrange": {
-        "forward": [
-            "作用",
-            "参数说明"
-        ],
-        "backward": []
-    },
-    "psubscribe": {
-        "forward": [
-            "作用",
-            "参数说明"
-        ],
-        "backward": []
-    },
-    "pexpireat": {
-        "forward": [
-            "作用",
-            "参数说明"
-        ],
-        "backward": []
-    },
-    "requirepass foobared": {
-        "forward": [],
-        "backward": [
-            "参数说明"
-        ]
-    },
-    "$geonear": {
-        "forward": [
-            "作用"
-        ],
-        "backward": []
-    },
-    "通过分数返回有序集合指定区间内的成员": {
-        "forward": [],
-        "backward": [
-            "作用"
         ]
     },
     "getbit": {
@@ -3048,117 +2193,35 @@
             "作用",
             "参数说明"
         ],
-        "backward": []
+        "backward": [
+            "常用命令"
+        ]
     },
-    "setbit": {
+    "非关系型数据库": {
+        "forward": [
+            "包括"
+        ],
+        "backward": [
+            "属于",
+            "包括"
+        ]
+    },
+    "pfmerge": {
         "forward": [
             "作用",
             "参数说明"
         ],
-        "backward": []
-    },
-    "创建集合": {
-        "forward": [
+        "backward": [
             "常用命令"
-        ],
-        "backward": [
-            "实现方式"
         ]
     },
-    "maxlen": {
-        "forward": [],
-        "backward": []
-    },
-    "config resetstat": {
+    "find": {
         "forward": [
-            "作用"
+            "参数说明"
         ],
-        "backward": []
-    },
-    "group by 语法": {
-        "forward": [
+        "backward": [
             "常用命令"
-        ],
-        "backward": []
-    },
-    "通过索引区间返回有序集合指定区间内的成员": {
-        "forward": [],
-        "backward": [
-            "作用"
         ]
-    },
-    "$redis-cli -h 127.0.0.1 -p 6379 -a \"mypass\"": {
-        "forward": [],
-        "backward": [
-            "实例"
-        ]
-    },
-    "查询文档": {
-        "forward": [
-            "常用命令"
-        ],
-        "backward": [
-            "实现方式"
-        ]
-    },
-    "新增": {
-        "forward": [
-            "常用命令"
-        ],
-        "backward": [
-            "实现方式"
-        ]
-    },
-    "hmset": {
-        "forward": [
-            "作用",
-            "参数说明"
-        ],
-        "backward": []
-    },
-    "$avg": {
-        "forward": [],
-        "backward": [
-            "参数说明"
-        ]
-    },
-    "groupname": {
-        "forward": [],
-        "backward": [
-            "参数说明"
-        ]
-    },
-    "rpoplpush": {
-        "forward": [
-            "作用",
-            "参数说明"
-        ],
-        "backward": []
-    },
-    "向集合中插入文档": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "返回 key 所储存的字符串值的长度。": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "password": {
-        "forward": [],
-        "backward": [
-            "参数说明"
-        ]
-    },
-    "xrange": {
-        "forward": [
-            "作用",
-            "参数说明"
-        ],
-        "backward": []
     },
     "update": {
         "forward": [
@@ -3171,129 +2234,21 @@
             "参数说明"
         ]
     },
-    "阻塞客户端命令一段时间（以毫秒计）。": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "vm-max-memory 0": {
-        "forward": [],
-        "backward": [
-            "参数说明"
-        ]
-    },
-    "xgroup create": {
-        "forward": [
-            "作用",
-            "参数说明"
-        ],
-        "backward": []
-    },
-    "异常数据处理": {
+    "数据过滤": {
         "forward": [
             "实现方式"
-        ],
-        "backward": [
-            "运维操作"
-        ]
-    },
-    "返回集合中一个或多个随机数": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "使用复制": {
-        "forward": [
-            "原理",
-            "特点",
-            "配置过程"
         ],
         "backward": [
             "实现方式"
         ]
     },
-    "删除一个或多个哈希表字段": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "服务管理": {
-        "forward": [
-            "实现方式"
-        ],
-        "backward": [
-            "运维操作"
-        ]
-    },
-    "rpush": {
+    "xrevrange": {
         "forward": [
             "作用",
             "参数说明"
         ],
-        "backward": []
-    },
-    "返回所有连接到服务器的客户端信息和统计数据。": {
-        "forward": [],
         "backward": [
-            "作用"
-        ]
-    },
-    "以给定的经纬度为中心， 返回键包含的位置元素当中， 与中心的距离不超过给定最大距离的所有位置元素": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "source": {
-        "forward": [],
-        "backward": [
-            "参数说明"
-        ]
-    },
-    "config get parameter": {
-        "forward": [
-            "作用",
-            "参数说明"
-        ],
-        "backward": []
-    },
-    "执行alter语句": {
-        "forward": [],
-        "backward": []
-    },
-    "exists": {
-        "forward": [
-            "作用",
-            "参数说明"
-        ],
-        "backward": []
-    },
-    "out": {
-        "forward": [],
-        "backward": [
-            "参数说明"
-        ]
-    },
-    "expireat": {
-        "forward": [
-            "作用",
-            "参数说明"
-        ],
-        "backward": []
-    },
-    "sql select 语句使用 where 子句": {
-        "forward": [],
-        "backward": []
-    },
-    "内存优化": {
-        "forward": [
-            "实现方式"
-        ],
-        "backward": [
-            "运维操作"
+            "常用命令"
         ]
     },
     "llen": {
@@ -3301,73 +2256,11 @@
             "作用",
             "参数说明"
         ],
-        "backward": []
-    },
-    "zscan": {
-        "forward": [
-            "作用",
-            "参数说明"
-        ],
-        "backward": []
-    },
-    "show collections": {
-        "forward": [],
         "backward": [
             "常用命令"
         ]
     },
-    "lindex": {
-        "forward": [
-            "作用",
-            "参数说明"
-        ],
-        "backward": []
-    },
-    "同步保存数据到硬盘": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "查看流和消费者组的相关信息": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "$skip": {
-        "forward": [
-            "作用"
-        ],
-        "backward": [
-            "常用命令"
-        ]
-    },
-    "间隔固定时间获取mongodb的当前运行状态，并输出。": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "xinfo stream": {
-        "forward": [
-            "作用"
-        ],
-        "backward": []
-    },
-    "masterauth <master-password>": {
-        "forward": [],
-        "backward": [
-            "参数说明"
-        ]
-    },
-    "用于复制功能(replication)的内部命令": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "mongodump": {
+    "xreadgroup group": {
         "forward": [
             "作用",
             "参数说明"
@@ -3376,75 +2269,75 @@
             "常用命令"
         ]
     },
-    "vm-page-size 32": {
-        "forward": [],
-        "backward": [
-            "参数说明"
-        ]
-    },
-    "关闭当前连接": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "pfmerge": {
+    "xdel": {
         "forward": [
             "作用",
             "参数说明"
         ],
-        "backward": []
+        "backward": [
+            "常用命令"
+        ]
     },
-    "linux": {
+    "查询集合": {
         "forward": [
-            "安装过程",
+            "常用命令"
+        ],
+        "backward": [
             "实现方式"
-        ],
-        "backward": []
+        ]
     },
-    "script load": {
+    "字符串类型": {
+        "forward": [
+            "包括"
+        ],
+        "backward": [
+            "实现方式"
+        ]
+    },
+    "订阅": {
+        "forward": [
+            "常用命令"
+        ],
+        "backward": [
+            "实现方式"
+        ]
+    },
+    "有序集合": {
+        "forward": [
+            "常用命令"
+        ],
+        "backward": [
+            "包括"
+        ]
+    },
+    "发布订阅": {
+        "forward": [
+            "实现方式",
+            "缺点"
+        ],
+        "backward": [
+            "实现方式"
+        ]
+    },
+    "echo": {
         "forward": [
             "作用",
             "参数说明"
         ],
-        "backward": []
-    },
-    "smove source destination member": {
-        "forward": [],
-        "backward": []
-    },
-    "sourcekey": {
-        "forward": [],
         "backward": [
-            "参数说明"
+            "常用命令"
         ]
     },
-    "mongodb中聚合的方法使用aggregate()": {
-        "forward": [
-            "参数说明"
-        ],
-        "backward": []
-    },
-    "hscan": {
+    "georadius": {
         "forward": [
             "作用",
             "参数说明"
         ],
-        "backward": []
-    },
-    "language_override": {
-        "forward": [],
         "backward": [
-            "参数说明"
+            "常用命令"
         ]
     },
-    "获取指定配置参数的值": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "文档管理": {
+    "集合管理": {
         "forward": [
             "实现方式"
         ],
@@ -3452,166 +2345,22 @@
             "运维操作"
         ]
     },
-    "xinfo groups": {
-        "forward": [
-            "作用"
-        ],
-        "backward": []
-    },
-    "返回最近一次 redis 成功将数据保存到磁盘上的时间，以 unix 时间戳格式表示。": {
-        "forward": [],
-        "backward": []
-    },
-    "移除列表元素": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "zincrby": {
+    "xadd": {
         "forward": [
             "作用",
             "参数说明"
         ],
-        "backward": []
-    },
-    "script kill": {
-        "forward": [
-            "作用"
-        ],
-        "backward": []
-    },
-    "mysql命令行": {
-        "forward": [],
         "backward": [
             "常用命令"
         ]
     },
-    "$match": {
-        "forward": [
-            "作用"
-        ],
-        "backward": [
-            "常用命令"
-        ]
-    },
-    "zcount": {
+    "save": {
         "forward": [
             "作用",
             "参数说明"
         ],
-        "backward": []
-    },
-    "添加指定元素到 hyperloglog 中": {
-        "forward": [],
-        "backward": []
-    },
-    "message": {
-        "forward": [],
-        "backward": [
-            "参数说明"
-        ]
-    },
-    "ip/端口嵌套的列表数组。": {
-        "forward": [],
-        "backward": []
-    },
-    "flushall": {
-        "forward": [
-            "作用"
-        ],
-        "backward": []
-    },
-    "删除": {
-        "forward": [
-            "常用命令"
-        ],
-        "backward": [
-            "实现方式"
-        ]
-    },
-    "计算给定的一个或多个有序集的交集并将结果集存储在新的有序集合 destination 中": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "用来限制mongodb聚合管道返回的文档数。": {
-        "forward": [],
-        "backward": []
-    },
-    "find": {
-        "forward": [
-            "参数说明"
-        ],
         "backward": [
             "常用命令"
-        ]
-    },
-    "在 php 脚本中使用 order by 子句": {
-        "forward": [
-            "常用命令"
-        ],
-        "backward": []
-    },
-    "清空 slow log": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "where子句": {
-        "forward": [
-            "常用命令"
-        ],
-        "backward": []
-    },
-    "field": {
-        "forward": [],
-        "backward": [
-            "参数说明"
-        ]
-    },
-    "pfadd": {
-        "forward": [
-            "作用",
-            "参数说明"
-        ],
-        "backward": []
-    },
-    "xpending": {
-        "forward": [
-            "作用"
-        ],
-        "backward": []
-    },
-    "desc": {
-        "forward": [],
-        "backward": []
-    },
-    "哈希分区": {
-        "forward": [],
-        "backward": [
-            "实现方式"
-        ]
-    },
-    "删除消费者组": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "geohash": {
-        "forward": [
-            "作用",
-            "参数说明"
-        ],
-        "backward": []
-    },
-    "databases 16": {
-        "forward": [],
-        "backward": [
-            "参数说明"
         ]
     },
     "数据分组": {
@@ -3622,465 +2371,7 @@
             "实现方式"
         ]
     },
-    "当设置成功时返回 ok ，否则返回一个错误。": {
-        "forward": [],
-        "backward": []
-    },
-    "异步保存数据到硬盘，并关闭服务器": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "zrangebyscore": {
-        "forward": [
-            "作用",
-            "参数说明"
-        ],
-        "backward": []
-    },
-    "decr": {
-        "forward": [
-            "作用",
-            "参数说明"
-        ],
-        "backward": []
-    },
-    "打印slow log，如果加了number参数，则打印指定数量的日志。": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "在php函数的mysqli_query()或sql select中使用": {
-        "forward": [],
-        "backward": []
-    },
-    "设置 key 过期时间的时间戳(unix timestamp) 以毫秒计": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "client setname": {
-        "forward": [
-            "作用",
-            "参数说明"
-        ],
-        "backward": []
-    },
-    "$sort": {
-        "forward": [
-            "作用"
-        ],
-        "backward": [
-            "常用命令"
-        ]
-    },
-    "field value": {
-        "forward": [],
-        "backward": [
-            "参数说明"
-        ]
-    },
-    "port 6379": {
-        "forward": [],
-        "backward": [
-            "参数说明"
-        ]
-    },
-    "将信息发送到指定的频道。": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "stream": {
-        "forward": [
-            "简介",
-            "优点",
-            "实现方式"
-        ],
-        "backward": []
-    },
-    "查看订阅与发布系统状态。": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "将 key 中储存的数字值减一。": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "zlexcount": {
-        "forward": [
-            "作用",
-            "参数说明"
-        ],
-        "backward": []
-    },
-    "regexp 操作符": {
-        "forward": [],
-        "backward": []
-    },
-    "在有序集合中计算指定字典区间内成员数量": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "zremrangebyscore": {
-        "forward": [
-            "作用",
-            "参数说明"
-        ],
-        "backward": []
-    },
-    "setnx": {
-        "forward": [
-            "作用",
-            "参数说明"
-        ],
-        "backward": []
-    },
-    "数据过滤": {
-        "forward": [
-            "实现方式"
-        ],
-        "backward": [
-            "实现方式"
-        ]
-    },
-    "返回第一个集合与其他集合之间的差异。": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "指定当前连接的名称。": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "subscribe": {
-        "forward": [
-            "作用",
-            "参数说明"
-        ],
-        "backward": []
-    },
-    "返回给定频道的订阅者数量， 订阅模式的客户端不计算在内。": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "increment": {
-        "forward": [],
-        "backward": [
-            "参数说明"
-        ]
-    },
-    "php连接代码": {
-        "forward": [],
-        "backward": []
-    },
-    "使用map reduce": {
-        "forward": [
-            "常用命令",
-            "简介"
-        ],
-        "backward": []
-    },
-    "删除消费者": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "psetex": {
-        "forward": [
-            "作用",
-            "参数说明"
-        ],
-        "backward": []
-    },
-    "将当前服务器转变为指定服务器的从属服务器(slave server)": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "消息通信": {
-        "forward": [
-            "实现方式"
-        ],
-        "backward": [
-            "运维操作"
-        ]
-    },
-    "sunionstore": {
-        "forward": [
-            "作用",
-            "参数说明"
-        ],
-        "backward": []
-    },
-    "lrem": {
-        "forward": [
-            "作用",
-            "参数说明"
-        ],
-        "backward": []
-    },
-    "使用 insert into ... select 语句": {
-        "forward": [],
-        "backward": []
-    },
-    "打印流信息": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "我们可以在命令窗口中运行 mongo.exe 命令即可连接上 mongodb": {
-        "forward": [],
-        "backward": []
-    },
-    "save <seconds> <changes>": {
-        "forward": [],
-        "backward": [
-            "参数说明"
-        ]
-    },
-    "$first": {
-        "forward": [],
-        "backward": [
-            "参数说明"
-        ]
-    },
-    "longitude": {
-        "forward": [],
-        "backward": [
-            "参数说明"
-        ]
-    },
-    "radius": {
-        "forward": [],
-        "backward": [
-            "参数说明"
-        ]
-    },
-    "srem": {
-        "forward": [
-            "作用",
-            "参数说明"
-        ],
-        "backward": []
-    },
-    "备份与恢复": {
-        "forward": [
-            "常用命令"
-        ],
-        "backward": [
-            "实现方式"
-        ]
-    },
-    "vm-max-threads 4": {
-        "forward": [],
-        "backward": [
-            "参数说明"
-        ]
-    },
-    "消费者组": {
-        "forward": [
-            "常用命令"
-        ],
-        "backward": [
-            "实现方式"
-        ]
-    },
-    "pfcount": {
-        "forward": [
-            "作用",
-            "参数说明"
-        ],
-        "backward": []
-    },
-    "dropdatabase": {
-        "forward": [],
-        "backward": []
-    },
-    "字符串": {
-        "forward": [
-            "常用命令"
-        ],
-        "backward": [
-            "包括"
-        ]
-    },
-    "查看哈希表 key 中，指定的字段是否存在。": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "用于清空当前数据库中的所有 key。": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "lpush": {
-        "forward": [
-            "作用",
-            "参数说明"
-        ],
-        "backward": []
-    },
-    "getrange": {
-        "forward": [
-            "作用",
-            "参数说明"
-        ],
-        "backward": []
-    },
-    "xlen": {
-        "forward": [
-            "作用",
-            "参数说明"
-        ],
-        "backward": []
-    },
-    "multi": {
-        "forward": [],
-        "backward": [
-            "参数说明"
-        ]
-    },
-    "ping": {
-        "forward": [
-            "作用"
-        ],
-        "backward": []
-    },
-    "$project": {
-        "forward": [
-            "作用"
-        ],
-        "backward": [
-            "常用命令"
-        ]
-    },
-    "更新已存在的文档": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "hget": {
-        "forward": [
-            "作用",
-            "参数说明"
-        ],
-        "backward": []
-    },
-    "default_language": {
-        "forward": [],
-        "backward": [
-            "参数说明"
-        ]
-    },
-    "将一个或多个值插入到列表头部": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "为哈希表 key 中的指定字段的浮点数值加上增量 increment 。": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "指定数量读取": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "config get": {
-        "forward": [
-            "作用",
-            "参数说明"
-        ],
-        "backward": []
-    },
-    "php sql 查询语句": {
-        "forward": [],
-        "backward": []
-    },
-    "用于向集合插入一个多个文档。": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "slowlog": {
-        "forward": [
-            "作用",
-            "参数说明",
-            "包括"
-        ],
-        "backward": []
-    },
-    "--drop": {
-        "forward": [],
-        "backward": [
-            "参数说明"
-        ]
-    },
-    "autoindexid": {
-        "forward": [],
-        "backward": []
-    },
-    "evalsha": {
-        "forward": [
-            "作用",
-            "参数说明"
-        ],
-        "backward": []
-    },
-    "将文档中的某一个数组类型字段拆分成多条，每条包含数组中的一个值。": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "备份数据": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "smove": {
-        "forward": [
-            "作用",
-            "参数说明"
-        ],
-        "backward": []
-    },
-    " 在redis客户端上连接本地redis 服务": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "mongorestore": {
+    "zunionstore": {
         "forward": [
             "作用",
             "参数说明"
@@ -4094,9 +2385,64 @@
             "作用",
             "参数说明"
         ],
-        "backward": []
+        "backward": [
+            "常用命令"
+        ]
     },
-    "安装数据库": {
+    "setrange": {
+        "forward": [
+            "作用",
+            "参数说明"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "cluster slots": {
+        "forward": [
+            "作用",
+            "返回值"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "getset": {
+        "forward": [
+            "作用",
+            "参数说明"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "scan": {
+        "forward": [
+            "作用",
+            "参数说明"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "连接数据库": {
+        "forward": [
+            "实现方式"
+        ],
+        "backward": [
+            "运维操作"
+        ]
+    },
+    "append": {
+        "forward": [
+            "作用",
+            "参数说明"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "sql注入": {
         "forward": [
             "常用命令"
         ],
@@ -4104,76 +2450,67 @@
             "实现方式"
         ]
     },
-    "-d": {
-        "forward": [],
-        "backward": [
-            "参数说明"
-        ]
-    },
-    "转移消息的归属权": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "destkey": {
-        "forward": [],
-        "backward": [
-            "参数说明"
-        ]
-    },
-    "使用delete sql语句删除": {
-        "forward": [],
+    "drop": {
+        "forward": [
+            "返回值"
+        ],
         "backward": [
             "常用命令"
         ]
     },
-    "返回给定 hyperloglog 的基数估算值。": {
-        "forward": [],
-        "backward": []
-    },
-    "bgrewriteaof": {
+    "debug object": {
         "forward": [
-            "作用"
+            "作用",
+            "参数说明",
+            "返回值"
         ],
-        "backward": []
-    },
-    "列表": {
-        "forward": [
+        "backward": [
             "常用命令"
-        ],
-        "backward": [
-            "包括"
         ]
     },
-    " primary key（主键） ": {
-        "forward": [],
-        "backward": []
-    },
-    "appendfsync everysec": {
-        "forward": [],
-        "backward": [
-            "参数说明"
-        ]
-    },
-    "pubsub numpat": {
+    "info [section]": {
         "forward": [
             "作用"
         ],
-        "backward": []
-    },
-    "consumername": {
-        "forward": [],
         "backward": [
-            "参数说明"
+            "常用命令"
         ]
     },
-    "zinterstore": {
+    "xack": {
+        "forward": [
+            "作用"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "rpushx": {
         "forward": [
             "作用",
             "参数说明"
         ],
-        "backward": []
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "config get": {
+        "forward": [
+            "作用",
+            "参数说明"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "slowlog": {
+        "forward": [
+            "作用",
+            "参数说明",
+            "包括"
+        ],
+        "backward": [
+            "常用命令"
+        ]
     },
     "mongostat": {
         "forward": [
@@ -4183,80 +2520,58 @@
             "常用命令"
         ]
     },
-    "logfile stdout": {
-        "forward": [],
-        "backward": [
-            "参数说明"
-        ]
-    },
-    "返回给定所有集合的交集并存储在 destination 中": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "zscore": {
+    "zremrangebylex": {
         "forward": [
             "作用",
             "参数说明"
         ],
-        "backward": []
+        "backward": [
+            "常用命令"
+        ]
     },
-    "哈希": {
+    "修改字段类型": {
         "forward": [
             "常用命令"
         ],
         "backward": [
-            "包括"
+            "实现方式"
         ]
     },
-    "zrangebylex": {
+    "like通配符": {
+        "forward": [
+            "常用命令"
+        ],
+        "backward": []
+    },
+    "排序": {
+        "forward": [
+            "常用命令",
+            "实现方式"
+        ],
+        "backward": [
+            "作用",
+            "实现方式"
+        ]
+    },
+    "ltrim": {
         "forward": [
             "作用",
             "参数说明"
         ],
-        "backward": []
+        "backward": [
+            "常用命令"
+        ]
     },
-    "hvals": {
+    "pfcount": {
         "forward": [
             "作用",
             "参数说明"
         ],
-        "backward": []
-    },
-    "reduce": {
-        "forward": [],
         "backward": [
-            "参数说明"
+            "常用命令"
         ]
     },
-    "withhash": {
-        "forward": [],
-        "backward": []
-    },
-    "对启动 redis 服务器时所指定的 redis.conf 配置文件进行改写。": {
-        "forward": [],
-        "backward": []
-    },
-    "在列表的元素前或者后插入元素": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "xinfo": {
-        "forward": [
-            "作用"
-        ],
-        "backward": []
-    },
-    "设置指定 key 的值": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "安全管控": {
+    "服务管理": {
         "forward": [
             "实现方式"
         ],
@@ -4264,139 +2579,48 @@
             "运维操作"
         ]
     },
-    "在聚合管道中跳过指定数量的文档，并返回余下的文档。": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "删除文档": {
-        "forward": [
-            "常用命令"
-        ],
-        "backward": [
-            "实现方式"
-        ]
-    },
-    "获取 key 的调试信息": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "退订": {
-        "forward": [
-            "常用命令"
-        ],
-        "backward": [
-            "实现方式"
-        ]
-    },
-    "expireafterseconds": {
-        "forward": [],
-        "backward": []
-    },
-    "数据库管理": {
-        "forward": [
-            "实现方式"
-        ],
-        "backward": [
-            "运维操作"
-        ]
-    },
-    "计算在有序集合中指定区间分数的成员数": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "返回有序集中指定分数区间内的成员，分数从高到低排序": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "hgetall": {
+    "brpop": {
         "forward": [
             "作用",
             "参数说明"
         ],
-        "backward": []
-    },
-    "使用crate temporary table sql语句创建临时表": {
-        "forward": [],
-        "backward": []
-    },
-    "mysql数据库": {
-        "forward": [
-            "运维操作",
-            "属于"
-        ],
-        "backward": []
-    },
-    "有序集合": {
-        "forward": [
+        "backward": [
             "常用命令"
-        ],
-        "backward": [
-            "包括"
         ]
     },
-    "向集合添加一个或多个成员": {
-        "forward": [],
-        "backward": [
-            "作用"
-        ]
-    },
-    "$limit": {
+    "blpop": {
         "forward": [
-            "作用"
+            "作用",
+            "参数说明"
         ],
         "backward": [
             "常用命令"
         ]
     },
-    "创建消费者组": {
-        "forward": [],
+    "scard": {
+        "forward": [
+            "作用",
+            "参数说明"
+        ],
         "backward": [
-            "作用"
+            "常用命令"
         ]
     },
-    "一个状态值：如果配置重写成功则返回 ok ，失败则返回一个错误。": {
-        "forward": [],
-        "backward": []
-    },
-    "从当前数据库中随机返回一个 key 。": {
-        "forward": [],
+    "psubscribe": {
+        "forward": [
+            "作用",
+            "参数说明"
+        ],
         "backward": [
-            "作用"
+            "常用命令"
         ]
     },
-    "获取 redis 命令详情数组": {
-        "forward": [],
-        "backward": []
-    },
-    "into outfile命令": {
-        "forward": [],
-        "backward": []
-    },
-    "集合": {
+    "数据备份": {
         "forward": [
             "常用命令"
         ],
         "backward": [
-            "包括"
-        ]
-    },
-    "返回 client setname 命令为连接设置的名字。": {
-        "forward": [],
-        "backward": []
-    },
-    "关系型数据库": {
-        "forward": [],
-        "backward": [
-            "包括",
-            "属于"
+            "实现方式"
         ]
     },
     "发送消息": {
@@ -4407,72 +2631,277 @@
             "实现方式"
         ]
     },
-    "获取消息列表，会自动过滤已经删除的消息": {
-        "forward": [],
+    "查询数据": {
+        "forward": [
+            "实现方式"
+        ],
+        "backward": [
+            "实现方式"
+        ]
+    },
+    "修改字段名": {
+        "forward": [
+            "常用命令"
+        ],
+        "backward": [
+            "实现方式"
+        ]
+    },
+    "zremrangebyrank": {
+        "forward": [
+            "作用",
+            "参数说明"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "flushdb": {
+        "forward": [
+            "作用"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "shutdown [nosave] [save]": {
+        "forward": [
+            "作用"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "slowlog len": {
+        "forward": [
+            "作用"
+        ],
+        "backward": [
+            "包括"
+        ]
+    },
+    "sinter": {
+        "forward": [
+            "作用",
+            "参数说明"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "zrevrank": {
+        "forward": [
+            "作用",
+            "参数说明"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "brpoplpush": {
+        "forward": [
+            "作用",
+            "参数说明"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "对 key 所储存的字符串值，获取指定偏移量上的位(bit)。": {
+        "forward": [
+            "参数说明"
+        ],
         "backward": [
             "作用"
         ]
     },
-    "msetnx": {
+    "redis数据库": {
         "forward": [
-            "作用",
-            "参数说明"
+            "简介",
+            "运维操作",
+            "属于"
         ],
-        "backward": []
+        "backward": [
+            "包括"
+        ]
     },
-    "select": {
-        "forward": [
-            "作用",
-            "参数说明"
-        ],
-        "backward": []
-    },
-    "command": {
-        "forward": [
-            "作用",
-            "返回值"
-        ],
-        "backward": []
-    },
-    "justone": {
-        "forward": [],
-        "backward": []
-    },
-    "redis hyperloglog": {
+    "数据恢复": {
         "forward": [
             "常用命令"
         ],
-        "backward": []
+        "backward": [
+            "实现方式"
+        ]
     },
-    "config set": {
-        "forward": [
-            "作用",
-            "实例",
-            "参数说明",
-            "返回值"
-        ],
-        "backward": []
-    },
-    "script exists": {
+    "eval": {
         "forward": [
             "作用",
             "参数说明"
         ],
-        "backward": []
+        "backward": [
+            "常用命令"
+        ]
     },
-    "command count": {
+    "xread": {
         "forward": [
             "作用",
-            "返回值"
+            "参数说明"
         ],
-        "backward": []
+        "backward": [
+            "常用命令"
+        ]
     },
-    "特殊表处理": {
+    "mongodb中聚合的方法使用aggregate()": {
+        "forward": [
+            "参数说明"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "sdiff": {
+        "forward": [
+            "作用",
+            "参数说明"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "rename": {
+        "forward": [
+            "作用",
+            "参数说明"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "pttl": {
+        "forward": [
+            "作用",
+            "参数说明"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "zrevrange": {
+        "forward": [
+            "作用",
+            "参数说明"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "字符串": {
+        "forward": [
+            "常用命令"
+        ],
+        "backward": [
+            "包括"
+        ]
+    },
+    "decr": {
+        "forward": [
+            "作用",
+            "参数说明"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "查询数据库": {
+        "forward": [
+            "常用命令"
+        ],
+        "backward": [
+            "实现方式"
+        ]
+    },
+    "xpending": {
+        "forward": [
+            "作用"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "rpoplpush": {
+        "forward": [
+            "作用",
+            "参数说明"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "$sort": {
+        "forward": [
+            "作用"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "expire": {
+        "forward": [
+            "作用",
+            "参数说明"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "lindex": {
+        "forward": [
+            "作用",
+            "参数说明"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "bgsave": {
+        "forward": [
+            "作用"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "$project": {
+        "forward": [
+            "作用"
+        ],
+        "backward": [
+            "常用命令"
+        ]
+    },
+    "索引": {
+        "forward": [
+            "简介",
+            "实现方式"
+        ],
+        "backward": [
+            "实现方式"
+        ]
+    },
+    "连接管理": {
         "forward": [
             "实现方式"
         ],
         "backward": [
             "运维操作"
+        ]
+    },
+    "xinfo": {
+        "forward": [
+            "作用"
+        ],
+        "backward": [
+            "常用命令"
         ]
     }
 }

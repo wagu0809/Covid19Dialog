@@ -2,6 +2,8 @@ from gremlin_python.structure.graph import Graph
 from gremlin_python.driver.driver_remote_connection import DriverRemoteConnection
 import json
 from util.utils import clean_entity, containsAlpha
+from util.utils import g_o, g_c
+from gremlin_python.process.traversal import P, T
 # from util.cleanPrediction import clean
 
 
@@ -57,42 +59,79 @@ def _filter(entities, predicted_edges, vocabs):
     return {'forward': forward_edges, 'backward': backward_edges}, cleared_verticies, unreachable_verticies
 
 
-def create_gremlin(conditions, vocabs, use_id=False):
-    if use_id:
-        verticies, edges = conditions[0]
-        verticies_ids = conditions[1]
+# def create_gremlin(conditions, vocabs, use_id=False):
+def create_gremlin(conditions, vocabs, database='c', domain=''):
+    if database == 'o':
+        g = g_o
+    elif database == 'c':
+        g = g_c
     else:
-        verticies, edges = conditions
+        g = g_c
+    vertices, edges = conditions
     edges = edges.split(';')
-    edges, verticies, unreachable_verticies = _filter(verticies, edges, vocabs)
+    edges, vertices, unreachable_verticies = _filter(vertices, edges, vocabs)
+
+    new_vertices = {}  #TODO: 在这里对vertices处理，filter之后对vertices进行，多实体重名处理
+    for i, vertice in enumerate(vertices):
+        # 先查询实体信息，判断是否有多个重名实体
+        if containsAlpha(vertice):
+            vertice_info = g.V().has('name', P('textContains', vertice)).elementMap().toList()
+        else:
+            vertice_info = g.V().has('name', vertice).elementMap().toList()
+        if domain and len(vertice_info) > 1:  # 判断是否有多个重名实体，在domain存在且重名实体数量大于1的时候进行筛选
+            for v_info in vertice_info:
+                if 'domain' in v_info.keys():  # 根据domain筛选出唯一实体
+                    if domain == v_info['domain'] and v_info['name'].lower() == vertice:
+                        new_vertices[v_info[T.id]] = vertice
+        elif len(vertice_info) > 1:
+            for v_info in vertice_info:
+                if v_info['name'].lower() == vertice:
+                    new_vertices[v_info[T.id]] = vertice
+        else:
+            new_vertices[vertice_info[0][T.id]] = vertice
+
     # if unreachable_verticies:  # 试用语义相似度做过滤，暂时不用
     #     cleaned_entities = clean(model, unreachable_verticies, matrix)
     #     verticies = list(verticies) + cleaned_entities
     all_possible_gremlin = {'forward': [], 'backward': []}
     for edge in edges['forward']:
-        for i, vertice in enumerate(verticies):
-            if vertice in unreachable_verticies:
-                continue
-            if use_id:  # 如果试用id为真，返回通过id查找的gremlin语句
-                forward_gremlin = f"g.V({verticies_ids[i]}).outE().hasLabel('{edge}').inV().elementMap().toList()"
-            else:
-                if containsAlpha(vertice):
-                    forward_gremlin = f"g.V().has('name', P('textContains', '{vertice}')).outE().hasLabel('{edge}').inV().elementMap().toList()"
-                else:
-                    forward_gremlin = f"g.V().has('name', '{vertice}').outE().hasLabel('{edge}').inV().elementMap().toList()"
-            all_possible_gremlin['forward'].append({'gsql': forward_gremlin, 'entity': vertice, 'edge': edge})
+        for key in new_vertices.keys():
+            vertice = new_vertices[key]
+            # if vertice in unreachable_verticies:
+            #     continue
+            forward_gremlin = f"g.V({key}).outE().hasLabel('{edge}').inV().elementMap().toList()"
+            all_possible_gremlin['forward'].append({'gsql': forward_gremlin, 'entity': vertice, 'edge': edge, 'id':key})
+
+        # for i, vertice in enumerate(vertices):
+        #     if vertice in unreachable_verticies:
+        #         continue
+        #     # if use_id:  # 如果使用id为真，返回通过id查找的gremlin语句
+        #     #     forward_gremlin = f"g.V({vertices_ids[i]}).outE().hasLabel('{edge}').inV().elementMap().toList()"
+        #     else:
+        #         if containsAlpha(vertice):
+        #             forward_gremlin = f"g.V().has('name', P('textContains', '{vertice}')).outE().hasLabel('{edge}').inV().elementMap().toList()"
+        #         else:
+        #             forward_gremlin = f"g.V().has('name', '{vertice}').outE().hasLabel('{edge}').inV().elementMap().toList()"
+        #     all_possible_gremlin['forward'].append({'gsql': forward_gremlin, 'entity': vertice, 'edge': edge})
 
     for edge in edges['backward']:
-        for vertice in verticies:
-            if vertice in unreachable_verticies:
-                continue
-            if containsAlpha(vertice):
-                backward_gremlin = f"g.V().has('name', P('textContains', '{vertice}')).inE().hasLabel('{edge}').outV().elementMap().toList()"
-            else:
-                backward_gremlin = f"g.V().has('name', '{vertice}').inE().hasLabel('{edge}').outV().elementMap().toList()"
-            all_possible_gremlin['backward'].append({'gsql': backward_gremlin, 'entity': vertice, 'edge': edge})
+        for key in new_vertices.keys():
+            vertice = new_vertices[key]
+            # if vertice in unreachable_verticies:
+            #     continue
+            backward_gremlin = f"g.V({key}).inE().hasLabel('{edge}').outV().elementMap().toList()"
+            all_possible_gremlin['backward'].append({'gsql': backward_gremlin, 'entity': vertice, 'edge': edge, 'id':key})
 
-    return all_possible_gremlin, verticies
+        # for vertice in vertices:
+        #     if vertice in unreachable_verticies:
+        #         continue
+        #     if containsAlpha(vertice):
+        #         backward_gremlin = f"g.V().has('name', P('textContains', '{vertice}')).inE().hasLabel('{edge}').outV().elementMap().toList()"
+        #     else:
+        #         backward_gremlin = f"g.V().has('name', '{vertice}').inE().hasLabel('{edge}').outV().elementMap().toList()"
+        #     all_possible_gremlin['backward'].append({'gsql': backward_gremlin, 'entity': vertice, 'edge': edge})
+
+    return all_possible_gremlin, new_vertices
 
 
 if __name__ == "__main__":

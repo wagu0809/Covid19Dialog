@@ -1,23 +1,11 @@
-from gremlin_python.structure.graph import Graph
-from gremlin_python.driver.driver_remote_connection import DriverRemoteConnection
 import pandas as pd
 from util.utils import containsAlpha
 from gremlin_python.process.traversal import P
 from gremlin_python.process.traversal import T
+from util.utils import g_o, g_c
 
-graph = Graph()
-# covid数据库
-connection_c = DriverRemoteConnection('ws://47.115.21.171:8182/gremlin', 'covid_traversal')
-g_c = graph.traversal().withRemote(connection_c)
 check_labels = pd.read_csv('./data/covid/check_categories.csv')['category'].tolist()
 
-# operation数据库
-connection_o = DriverRemoteConnection('ws://47.115.21.171:8182/gremlin', 'operation_traversal')
-g_o = graph.traversal().withRemote(connection_o)
-
-p_hierarchy = ['运维操作', '实现方式', '常用命令', ['参数说明', '作用']]  # 边的层级关系，里边的列表表示同级边
-path = []  # 记录做深度搜索时的轨迹，同级别的记录到一个列表里存入该列表，每次使用先清空
-target_found = False
 
 def _clinicalManifestations(spo, forward):  # 临床表现
 
@@ -247,8 +235,22 @@ class CovidTemplate2Gremlin:
 """
 以下是运维得回答模板方法
 """
+p_hierarchy = ['运维操作', '实现方式', '常用命令', '参数说明', '作用', '安装平台', '安装过程', '配置过程', '包括']
+target_found = False
+answer_pool = {}  # 用来存储当找到一个答案时所走的路径，每找到一个答案，路径都会不一样，键为递归深度：0， 1， 2...，值为当前深度的实体和其连接下一个实体的边
+max_recursion = 3
+entity_edge_pair = {}
 
-def find_next(vertice, target_edge, i=0):
+
+def remove_uncommon_phrase(s):
+    uncommon_phrase = {'的包括为': '包括'}
+    for k, v in uncommon_phrase.items():
+        s = s.replace(k, v)
+
+    return s
+
+
+def find_next(vertice, id, target_edge, i=0):
     """
     :param vertice: 第一次输入为问题中识别的实体，之后再输入时其下级实体
     :param target_edge: 目标edge（即通过问题识别的意图）
@@ -258,14 +260,12 @@ def find_next(vertice, target_edge, i=0):
     """
     all_spos = []
     assert isinstance(vertice, str), "Input vertice should be string."
-    if i > 2:  # 控制递归深度
-        return all_spos
 
+    if i > max_recursion:  # 控制递归深度
+        return all_spos
+    answer_pool[i] = [vertice]
     # 找到传入节点射出的边（outE），next_edges
-    if containsAlpha(vertice):
-        next_edges = g_o.V().has('name', P('textContains', vertice)).outE().elementMap().toList()
-    else:
-        next_edges = g_o.V().has('name', vertice).outE().elementMap().toList()
+    next_edges = g_o.V(id).outE().elementMap().toList()
 
     # 对next_edges去重
     edges = set()
@@ -275,16 +275,14 @@ def find_next(vertice, target_edge, i=0):
 
     # 遍历每个边，找到下个节点及下个节点射出的边
     for next_edge_name in edges:
+        answer_pool[i].append(next_edge_name)
         if next_edge_name not in p_hierarchy:  # 限定深度搜索的适用范围
             continue
-        # 查询其连接的下一个级点的信息，
-        if containsAlpha(vertice):
-            next_vertices = g_o.V().has('name', P('textContains', vertice)).outE().hasLabel(next_edge_name).inV().elementMap().toList()
-        else:
-            next_vertices = g_o.V().has('name', vertice).outE().hasLabel(next_edge_name).inV().elementMap().toList()
 
+        # 查询其连接的下一个级点的信息，
+        next_vertices = g_o.V(id).outE().hasLabel(next_edge_name).inV().elementMap().toList()
         if next_edge_name == target_edge:
-            global target_found
+            # global target_found
             target_found = True  # 找到目标意图的标识
             next_vertice_names = []  # 存储所有next_vertices的名称
             # 遍历所有节点，记录next_vertices的信息
@@ -292,18 +290,55 @@ def find_next(vertice, target_edge, i=0):
                 # 记录next_edge的信息
                 next_vertice_name = next_vertice['name']
                 next_vertice_names.append(next_vertice_name)
+                answer_pool[i].append(next_vertice_name)
             all_spos.append({'answer': next_vertice_names, 'entity': vertice, 'edge': next_edge_name})
-
+            # print(answer_pool)
+            for key in answer_pool.keys():
+                value = answer_pool[key]
+                if target_edge in value:  # 判断是否目标意图存在于次列表，如果存在，说明答案也包含在此列表，其index为-1
+                    a, b, c = value[0], value[1], value[2:]  # a，b，c需要重命名，a表示实体，b表示边，与目标意图相等，c表示答案
+                    key = a + '###' + b
+                    if key in entity_edge_pair.keys():
+                        if c not in entity_edge_pair[key]:
+                            if isinstance(c, list):
+                                entity_edge_pair[key].extend(c)
+                            else:
+                                entity_edge_pair[key].append(c)
+                    else:
+                        if isinstance(c, list):
+                            entity_edge_pair[key] = []
+                            entity_edge_pair[key] += c
+                        else:
+                            entity_edge_pair[key] = [c]
+                elif len(value) > 1 and key < len(answer_pool.keys())-1:
+                    a, b, c = value[0], value[-1], answer_pool[key+1][0]  # 如果目标意图在此列表，只取当前value的0和-1，下一个value的0
+                    key = a + '###' + b
+                    if key in entity_edge_pair.keys():
+                        if c not in entity_edge_pair[key]:
+                            if isinstance(c, list):
+                                entity_edge_pair[key] += c
+                            else:
+                                entity_edge_pair[key].append(c)
+                    else:
+                        if isinstance(c, list):
+                            entity_edge_pair[key] = []
+                            entity_edge_pair[key] += c
+                        else:
+                            entity_edge_pair[key] = [c]
         else:
             vertice_names = []
             for next_vertice in next_vertices:
                 vertice_names.append(next_vertice['name'])
+
             all_spos.append({'answer': vertice_names, 'entity': vertice, 'edge': next_edge_name})
             # 递归
-            for next_vertice in vertice_names:
-                next_spos = find_next(next_vertice, target_edge, i+1)
-                all_spos += next_spos
-    return all_spos
+            for next_vertice in next_vertices:
+                if i < max_recursion:
+                    target_found = False
+                    next_spos = find_next(next_vertice['name'], next_vertice[T.id], target_edge, i+1)
+                    if target_found:
+                        all_spos += next_spos
+        return all_spos
 
 
 def find_answer(spo, target_edge=None, recursion=True):
@@ -314,51 +349,85 @@ def find_answer(spo, target_edge=None, recursion=True):
     :param recursion: 是否需要递归去查找更深的信息
     :return:
     """
-    gremlins, vertices, domain = spo
+
+    # 初始化全局变量
+    global target_found
+    global answer_pool
+    global entity_edge_pair
+    target_found = False
+    answer_pool = {}
+    entity_edge_pair = {}
+
+    gremlins, vertices_dict, domain = spo
     # forward
     f_gremlins = gremlins['forward']
     forward_answers = {}  # 直接查找找到的答案
     recursion_answers = {}  # 通过深度递归查找找到的答案
-    if f_gremlins:  # TODO: 改造成试用实体id的方式进行递归查找
+    if f_gremlins:  # TODO: 改造成试用实体id的方式进行递归查找，有时
         for gsql in f_gremlins:
             gremlin_sql = gsql['gsql'].replace('g.V(', 'g_o.V(')
             result = eval(gremlin_sql)
-            forward_answers[gsql['entity']] = []
-            answers = []
-            for item in result:
-                answers.append(item['name'])
-            forward_answers[gsql['entity']].append({'answer': answers, 'entity': gsql['entity'], 'edge': gsql['edge']})
-
+            if result:
+                forward_answers[gsql['entity']] = []
+                answers = []
+                for item in result:
+                    answers.append(item['name'])
+                forward_answers[gsql['entity']].append({'answer': answers, 'entity': gsql['entity'], 'edge': gsql['edge']})
+            else:
+                if recursion:
+                    target_found = False
+                    recursion_answers[gsql['entity']] = []
+                    find_next(gsql['entity'], gsql['id'], target_edge)
+                    for key in entity_edge_pair:
+                        entity, edge = key.split('###')
+                        if len(entity_edge_pair[key]) == 1 and isinstance(entity_edge_pair[key][0], list):
+                            answer = entity_edge_pair[key][0]
+                        else:
+                            answer = entity_edge_pair[key]
+                        recursion_answers[gsql['entity']].append({'entity': entity, 'edge': edge, 'answer': answer})
+                    # 需要对recursion_answer做处理
+                    # if recursion_answers[gsql['entity']]:
+                    forward_answers.update(recursion_answers)
     else:
         if recursion:
-            for vertice in vertices:
-                global target_found
+            for key in vertices_dict.keys():
+                vertice = vertices_dict[key]
                 target_found = False
                 recursion_answers[vertice] = []
-                recursion_answers[vertice] += find_next(vertice, target_edge)
+                find_next(vertice, key, target_edge)
+                for key in entity_edge_pair:
+                    entity, edge = key.split('###')
+                    if len(entity_edge_pair[key]) == 1 and isinstance(entity_edge_pair[key][0], list):
+                        answer = entity_edge_pair[key][0]
+                    else:
+                        answer = entity_edge_pair[key]
+                    recursion_answers[vertice].append({'entity': entity, 'edge': edge, 'answer': answer})
             # 需要对recursion_answer做处理
-            if target_found:
-                forward_answers = recursion_answers
-
+            # if target_found:
+            # print(answer_pool)
+            forward_answers.update(recursion_answers)
+    # print(f"entity edge pair: {entity_edge_pair}")
+    # print(f"forward answers: {forward_answers}")
     return forward_answers
 
 
 def _methods(spo, forward):  # 实现方式
     target_edge = '实现方式'
-    gremlins, vertices, domain = spo
+    gremlins, vertices_dict, domain = spo
     final_answer = {}
     forward_answers = find_answer(spo, target_edge)
 
     if forward_answers:
         s = ''
-        for vertice in vertices:
+        for key in vertices_dict:
+            vertice = vertices_dict[key]
             final_answer[vertice] = []
             for answer in forward_answers[vertice]:
                 if target_edge == answer['edge']:
                     s += answer['entity'] + '的实现方式为：' + '，'.join(answer['answer']) + '。\n'
                 else:
                     s += answer['entity'] + '的' + answer['edge'] + '为' + '，'.join(answer['answer']) + '。\n'
-            final_answer[vertice].append(s)
+            final_answer[vertice].append(remove_uncommon_phrase(s))
         return final_answer
     else:
         return {'none': ["非常抱歉，没找到您想要的答案!"]}
@@ -372,7 +441,8 @@ def _commonCommand(spo, forward):  # 常用命令
 
     if forward_answers:
         s = ''
-        for vertice in vertices:
+        for key in vertices.keys():
+            vertice = vertices[key]
             final_answer[vertice] = []
             for answer in forward_answers[vertice]:
                 command_format = ''
@@ -387,7 +457,7 @@ def _commonCommand(spo, forward):  # 常用命令
                     s += answer['entity'] + '的常用命令为：' + command_format
                 else:
                     s += answer['entity'] + '的' + answer['edge'] + '为：' + '，'.join(answer['answer']) + '。\n'
-            final_answer[vertice].append(s)
+            final_answer[vertice].append(remove_uncommon_phrase(s))
         return final_answer
     else:
         return {'none': ["非常抱歉，没找到您想要的答案!"]}
@@ -401,14 +471,15 @@ def _mentenanceOperation(spo, forward):  # 运维操作
 
     if forward_answers:
         s = ''
-        for vertice in vertices:
+        for key in vertices.keys():
+            vertice = vertices[key]
             final_answer[vertice] = []
             for answer in forward_answers[vertice]:
                 if target_edge == answer['edge']:
                     s += answer['entity'] + '的运维操作包括：'  + '，'.join(answer['answer']) + '。\n'
                 else:
                     s += answer['entity'] + '的' + answer['edge'] + '为：' + '，'.join(answer['answer']) + '。\n'
-            final_answer[vertice].append(s)
+            final_answer[vertice].append(remove_uncommon_phrase(s))
         return final_answer
     else:
         return {'none': ["非常抱歉，没找到您想要的答案!"]}
@@ -416,13 +487,14 @@ def _mentenanceOperation(spo, forward):  # 运维操作
 
 def _parameters(spo, forward):  # 参数说明
     target_edge = '参数说明'
-    gremlins, vertices = spo
+    gremlins, vertices, _ = spo
     final_answer = {}
     forward_answers = find_answer(spo, target_edge)
 
     if forward_answers:
         s = ''
-        for vertice in vertices:
+        for key in vertices.keys():
+            vertice = vertices[key]
             final_answer[vertice] = []
             for answer in forward_answers[vertice]:
                 command_format = ''
@@ -437,7 +509,7 @@ def _parameters(spo, forward):  # 参数说明
                     s += answer['entity'] + '的参数包括：' + command_format
                 else:
                     s += answer['entity'] + '的' + answer['edge'] + '为：' + '，'.join(answer['answer']) + '。\n'
-            final_answer[vertice].append(s)
+            final_answer[vertice].append(remove_uncommon_phrase(s))
         return final_answer
     else:
         return {'none': ["非常抱歉，没找到您想要的答案!"]}
@@ -445,13 +517,14 @@ def _parameters(spo, forward):  # 参数说明
 
 def _commondFunction(spo, forward):  # 作用：命令的作用
     target_edge = '作用'
-    gremlins, vertices = spo
+    gremlins, vertices, _ = spo
     final_answer = {}
     forward_answers = find_answer(spo, target_edge, False)
 
     if forward_answers:
         s = ''
-        for vertice in vertices:
+        for key in vertices.keys():
+            vertice = vertices[key]
             final_answer[vertice] = []
             for answer in forward_answers[vertice]:
                 if target_edge == answer['edge']:
@@ -459,7 +532,7 @@ def _commondFunction(spo, forward):  # 作用：命令的作用
                 else:
                     s += answer['entity'] + '的' + answer['edge'] + '为：' + '，'.join(answer['answer'])
                 s += '\n' if s.endswith('。') else '。\n'
-            final_answer[vertice].append(s)
+            final_answer[vertice].append(remove_uncommon_phrase(s))
         return final_answer
     else:
         return {'none': ["非常抱歉，没找到您想要的答案!"]}
@@ -467,20 +540,21 @@ def _commondFunction(spo, forward):  # 作用：命令的作用
 
 def _returnValue(spo, forward):  # 返回值：命令或者方法的返回值
     target_edge = '返回值'
-    gremlins, vertices = spo
+    gremlins, vertices, _ = spo
     final_answer = {}
     forward_answers = find_answer(spo, target_edge, False)
 
     if forward_answers:
         s = ''
-        for vertice in vertices:
+        for key in vertices.keys():
+            vertice = vertices[key]
             final_answer[vertice] = []
             for answer in forward_answers[vertice]:
                 if target_edge == answer['edge']:
                     s += answer['entity'] + '的返回值有：' + '，'.join(answer['answer']) + '。\n'
                 else:
                     s += answer['entity'] + '的' + answer['edge'] + '为：' + '，'.join(answer['answer']) + '。\n'
-            final_answer[vertice].append(s)
+            final_answer[vertice].append(remove_uncommon_phrase(s))
         return final_answer
     else:
         return {'none': ["非常抱歉，没找到您想要的答案!"]}
@@ -488,13 +562,14 @@ def _returnValue(spo, forward):  # 返回值：命令或者方法的返回值
 
 def _introduction(spo, forward):  # 简介
     target_edge = '简介'
-    gremlins, vertices = spo
+    gremlins, vertices, _ = spo
     final_answer = {}
     forward_answers = find_answer(spo, target_edge, False)
 
     if forward_answers:
         s = ''
-        for vertice in vertices:
+        for key in vertices.keys():
+            vertice = vertices[key]
             final_answer[vertice] = []
             for answer in forward_answers[vertice]:
                 if target_edge == answer['edge']:
@@ -502,7 +577,7 @@ def _introduction(spo, forward):  # 简介
                 else:
                     s += answer['entity'] + '的' + answer['edge'] + '为：' + '，'.join(answer['answer'])
                 s += '\n' if s.endswith('。') else '。\n'
-            final_answer[vertice].append(s)
+            final_answer[vertice].append(remove_uncommon_phrase(s))
         return final_answer
     else:
         return {'none': ["非常抱歉，没找到您想要的答案!"]}
@@ -510,13 +585,14 @@ def _introduction(spo, forward):  # 简介
 
 def _virtue(spo, forward):  # 优点
     target_edge = '优点'
-    gremlins, vertices = spo
+    gremlins, vertices, _ = spo
     final_answer = {}
     forward_answers = find_answer(spo, target_edge, False)
 
     if forward_answers:
         s = ''
-        for vertice in vertices:
+        for key in vertices.keys():
+            vertice = vertices[key]
             final_answer[vertice] = []
             for answer in forward_answers[vertice]:
                 if target_edge == answer['edge']:
@@ -524,7 +600,7 @@ def _virtue(spo, forward):  # 优点
                 else:
                     s += answer['entity'] + '的' + answer['edge'] + '为：' + '，'.join(answer['answer'])
                 s += '\n' if s.endswith('。') else '。\n'
-            final_answer[vertice].append(s)
+            final_answer[vertice].append(remove_uncommon_phrase(s))
         return final_answer
     else:
         return {'none': ["非常抱歉，没找到您想要的答案!"]}
@@ -532,13 +608,14 @@ def _virtue(spo, forward):  # 优点
 
 def _shortcoming(spo, forward):  # 缺点
     target_edge = '缺点'
-    gremlins, vertices = spo
+    gremlins, vertices, _ = spo
     final_answer = {}
     forward_answers = find_answer(spo, target_edge, False)
 
     if forward_answers:
         s = ''
-        for vertice in vertices:
+        for key in vertices.keys():
+            vertice = vertices[key]
             final_answer[vertice] = []
             for answer in forward_answers[vertice]:
                 if target_edge == answer['edge']:
@@ -546,7 +623,7 @@ def _shortcoming(spo, forward):  # 缺点
                 else:
                     s += answer['entity'] + '的' + answer['edge'] + '为：' + '，'.join(answer['answer'])
                 s += '\n' if s.endswith('。') else '。\n'
-            final_answer[vertice].append(s)
+            final_answer[vertice].append(remove_uncommon_phrase(s))
         return final_answer
     else:
         return {'none': ["非常抱歉，没找到您想要的答案!"]}
@@ -554,13 +631,14 @@ def _shortcoming(spo, forward):  # 缺点
 
 def _charateristics(spo, forward):  # 特点
     target_edge = '特点'
-    gremlins, vertices = spo
+    gremlins, vertices, _ = spo
     final_answer = {}
     forward_answers = find_answer(spo, target_edge, False)
 
     if forward_answers:
         s = ''
-        for vertice in vertices:
+        for key in vertices.keys():
+            vertice = vertices[key]
             final_answer[vertice] = []
             for answer in forward_answers[vertice]:
                 if target_edge == answer['edge']:
@@ -568,7 +646,7 @@ def _charateristics(spo, forward):  # 特点
                 else:
                     s += answer['entity'] + '的' + answer['edge'] + '为：' + '，'.join(answer['answer'])
                 s += '\n' if s.endswith('。') else '。\n'
-            final_answer[vertice].append(s)
+            final_answer[vertice].append(remove_uncommon_phrase(s))
         return final_answer
     else:
         return {'none': ["非常抱歉，没找到您想要的答案!"]}
@@ -576,13 +654,14 @@ def _charateristics(spo, forward):  # 特点
 
 def _theory(spo, forward):  # 原理
     target_edge = '原理'
-    gremlins, vertices = spo
+    gremlins, vertices, _ = spo
     final_answer = {}
     forward_answers = find_answer(spo, target_edge, False)
 
     if forward_answers:
         s = ''
-        for vertice in vertices:
+        for key in vertices.keys():
+            vertice = vertices[key]
             final_answer[vertice] = []
             for answer in forward_answers[vertice]:
                 if target_edge == answer['edge']:
@@ -590,11 +669,79 @@ def _theory(spo, forward):  # 原理
                 else:
                     s += answer['entity'] + '的' + answer['edge'] + '为：' + '，'.join(answer['answer'])
                 s += '\n' if s.endswith('。') else '。\n'
-            final_answer[vertice].append(s)
+            final_answer[vertice].append(remove_uncommon_phrase(s))
         return final_answer
     else:
         return {'none': ["非常抱歉，没找到您想要的答案!"]}
 
+
+def _installation(spo, forward):  # 安装过程
+    target_edge = '安装过程'
+    gremlins, vertices, _ = spo
+    final_answer = {}
+    forward_answers = find_answer(spo, target_edge)
+
+    if forward_answers:
+        s = ''
+        for key in vertices.keys():
+            vertice = vertices[key]
+            final_answer[vertice] = []
+            for answer in forward_answers[vertice]:
+                if target_edge == answer['edge']:
+                    try:
+                        s += answer['entity'] + '的安装过程为：' + '，'.join(answer['answer']) + '。\n'
+                    except:
+                        print(f"excetp: {answer}")
+                else:
+                    s += answer['entity'] + '的' + answer['edge'] + '为：' + '，'.join(answer['answer']) + '。\n'
+            final_answer[vertice].append(remove_uncommon_phrase(s))
+        return final_answer
+    else:
+        return {'none': ["非常抱歉，没找到您想要的答案!"]}
+
+
+def _configuration(spo, forward):  # 配置过程
+    target_edge = '配置过程'
+    gremlins, vertices, _ = spo
+    final_answer = {}
+    forward_answers = find_answer(spo, target_edge)
+    # print(f"forward answer: {forward_answers}")
+    if forward_answers:
+        s = ''
+        for key in vertices.keys():
+            vertice = vertices[key]
+            final_answer[vertice] = []
+            for answer in forward_answers[vertice]:
+                if target_edge == answer['edge']:
+                    s += answer['entity'] + '的配置过程为：' + '，'.join(answer['answer']) + '。\n'
+                else:
+                    s += answer['entity'] + '的' + answer['edge'] + '为：' + '，'.join(answer['answer']) + '。\n'
+            final_answer[vertice].append(remove_uncommon_phrase(s))
+        return final_answer
+    else:
+        return {'none': ["非常抱歉，没找到您想要的答案!"]}
+
+
+def _including(spo, forward):  # 包括
+    target_edge = '包括'
+    gremlins, vertices, _ = spo
+    final_answer = {}
+    forward_answers = find_answer(spo, target_edge)
+    # print(f"forward answer: {forward_answers}")
+    if forward_answers:
+        s = ''
+        for key in vertices.keys():
+            vertice = vertices[key]
+            final_answer[vertice] = []
+            for answer in forward_answers[vertice]:
+                if target_edge == answer['edge']:
+                    s += answer['entity'] + '包括：' + '，'.join(answer['answer']) + '。\n'
+                else:
+                    s += answer['entity'] + '的' + answer['edge'] + '为：' + '，'.join(answer['answer']) + '。\n'
+            final_answer[vertice].append(remove_uncommon_phrase(s))
+        return final_answer
+    else:
+        return {'none': ["非常抱歉，没找到您想要的答案!"]}
 
 class ServerTemplate2Gremlin():
     def __init__(self):
@@ -613,6 +760,9 @@ class ServerTemplate2Gremlin():
             8: _shortcoming,
             9: _charateristics,
             10: _theory,
+            11: _installation,
+            12: _configuration,
+            13: _including,
         }
         return classification[cls](spo, is_forward)
 
